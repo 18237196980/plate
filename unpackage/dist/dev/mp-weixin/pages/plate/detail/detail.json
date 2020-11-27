@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "修改车牌",
+  "navigationBarBackgroundColor": "#435377",
+  "usingComponents": {
+    "plate-input": "/components/uni-plate-input/uni-plate-input"
+  }
+}

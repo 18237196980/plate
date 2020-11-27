@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "个人资料",
+  "navigationBarBackgroundColor": "#435377",
+  "usingComponents": {
+    "pick-regions": "/components/pick-regions/pick-regions"
+  }
+}

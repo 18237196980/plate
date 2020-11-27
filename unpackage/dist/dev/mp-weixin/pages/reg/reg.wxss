@@ -1,0 +1,364 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 去登陆 */
+.goRegister.data-v-c589f0a0 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: end;
+	-webkit-justify-content: flex-end;
+	        justify-content: flex-end;
+	margin-top: 40rpx;
+	font-size: 30rpx;
+	font-weight: 600;
+	color: #a6a7a1;
+}
+.go_reg_click.data-v-c589f0a0 {
+	color: #0c61fe;
+}
+.registerContainer.data-v-c589f0a0 {
+	width: 100%;
+	height: 100%;
+	background: #fff;
+}
+.registerInner.data-v-c589f0a0 {
+	width: 80%;
+	margin: 0 auto;
+	padding-top: 40rpx;
+}
+.registerInner .register_header .register_logo.data-v-c589f0a0 {
+	color: #0faeff;
+	font-weight: bolder;
+	font-size: 80rpx;
+	text-align: center;
+}
+.register_header .register_header_title.data-v-c589f0a0 {
+	text-align: center;
+	padding-top: 80rpx;
+}
+.register_header_title ._a.data-v-c589f0a0 {
+	text-decoration: none;
+	font-size: 28rpx;
+	color: #333;
+	padding-bottom: 8rpx;
+}
+.register_header_title ._a.data-v-c589f0a0:first-child {
+	margin-right: 80rpx;
+}
+.register_header_title ._a.on.data-v-c589f0a0 {
+	color: #0faeff;
+	font-weight: bolder;
+	border-bottom: 4rpx solid #0faeff;
+}
+.register_content form ._div.on.data-v-c589f0a0 {
+	display: block;
+}
+.register_content form input.data-v-c589f0a0 {
+	width: 100%;
+	height: 100%;
+	border: 2rpx solid #ddd;
+	-webkit-border-radius: 8rpx;
+	        border-radius: 8rpx;
+	outline: none;
+	padding-left: 20rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.register_content form input.data-v-c589f0a0:focus {
+	border: 2rpx solid #0faeff;
+}
+.register_message.data-v-c589f0a0 {
+	position: relative;
+	margin-top: 32rpx;
+	height: 96rpx;
+	font-size: 28rpx;
+	background: #fff;
+}
+.get_verification.data-v-c589f0a0 {
+	position: absolute;
+	top: 50%;
+	right: 20rpx;
+	-webkit-transform: translateY(-50%);
+	        transform: translateY(-50%);
+	border: none;
+	color: #ccc;
+	background: transparent;
+	font-size: 28rpx;
+}
+.get_verification_right_phone.data-v-c589f0a0 {
+	position: absolute;
+	top: 50%;
+	right: 20rpx;
+	-webkit-transform: translateY(-50%);
+	        transform: translateY(-50%);
+	border: none;
+	background: transparent;
+	font-size: 28rpx;
+	color: #4dab01;
+}
+.register_hint.data-v-c589f0a0 {
+	text-align: center;
+	color: #999;
+	margin-top: 24rpx;
+	font-size: 28rpx;
+	line-height: 40rpx;
+}
+.register_hint ._a.data-v-c589f0a0 {
+	text-decoration: none;
+	color: #0faeff;
+}
+.register_verification.data-v-c589f0a0 {
+	position: relative;
+	margin-top: 32rpx;
+	height: 96rpx;
+	font-size: 28rpx;
+	background: #fff;
+}
+.register_verification .switch_button.data-v-c589f0a0 {
+	border: 2rpx solid #ddd;
+	width: 60rpx;
+	height: 32rpx;
+	position: absolute;
+	top: 50%;
+	right: 20rpx;
+	-webkit-transform: translateY(-50%);
+	        transform: translateY(-50%);
+	-webkit-border-radius: 16rpx;
+	        border-radius: 16rpx;
+	padding: 0 12rpx;
+	line-height: 32rpx;
+	font-size: 24rpx;
+	-webkit-transition: background-color 0.3s;
+	transition: background-color 0.3s;
+}
+.register_verification .switch_button.on.data-v-c589f0a0 {
+	background: #0faeff;
+}
+.register_verification .switch_button.off.data-v-c589f0a0 {
+	background: #fff;
+}
+.switch_button .switch_circle.data-v-c589f0a0 {
+	background: #fff;
+	border: 2rpx solid #ddd;
+	-webkit-border-radius: 50%;
+	        border-radius: 50%;
+	width: 32rpx;
+	height: 32rpx;
+	position: absolute;
+	left: -1px;
+	top: -1px;
+	-webkit-box-shadow: 0 4rpx 8rpx 0 rgba(0, 0, 0, 0.1);
+	        box-shadow: 0 4rpx 8rpx 0 rgba(0, 0, 0, 0.1);
+}
+.switch_button .switch_circle.right.data-v-c589f0a0 {
+	-webkit-transform: translateX(60rpx);
+	        transform: translateX(60rpx);
+}
+.switch_button .switch_text.data-v-c589f0a0 {
+	color: #ddd;
+	float: right;
+}
+.register_submit.data-v-c589f0a0 {
+	display: block;
+	width: 100%;
+	height: 84rpx;
+	margin-top: 60rpx;
+	background: #0faeff;
+	-webkit-border-radius: 8rpx;
+	        border-radius: 8rpx;
+	font-size: 32rpx;
+	line-height: 84rpx;
+	color: #fff;
+	text-align: center;
+	border: none;
+}
+.register_hint.data-v-c589f0a0 {
+	color: #999;
+	margin-top: 24rpx;
+	font-size: 28rpx;
+	line-height: 40rpx;
+}
+register_hint ._a.data-v-c589f0a0 {
+	text-decoration: none;
+	color: #0faeff;
+}
+

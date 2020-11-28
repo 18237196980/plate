@@ -67,6 +67,14 @@
             }
             
         }
+        ,{
+            "path" : "pages/all/all",
+            "style": {
+            	"navigationBarTitleText": "测",
+            	"navigationBarBackgroundColor": "#435377"
+            }
+            
+        }
     ],
 	"tabBar": {
 		"color": "#666",
@@ -78,6 +86,12 @@
 				"iconPath": "static/icon_home_normal.png",
 				"selectedIconPath": "static/icon_home_press.png",
 				"text": "首页"
+			},
+			{
+				"pagePath": "pages/all/all",
+				"iconPath": "static/icon_me_normal.png",
+				"selectedIconPath": "static/icon_me_press.png",
+				"text": "测"
 			},
 			{
 				"pagePath": "pages/me/me/me",

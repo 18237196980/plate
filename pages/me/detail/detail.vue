@@ -21,9 +21,6 @@
 			<!-- #endif -->
 			<view class="cu-form-group">
 				<view class="title">出生日期</view>
-				<!-- <picker mode="date" v-model="birth" name="birth" start="1900-01-01" :end="end" @change="DateChange">
-					<view class="picker">{{ birth }}</view>
-				</picker> -->
 				<picker mode="date" v-model="birth" :start="startDate" :end="endDate" @change="DateChange">
 					<view class="uni-input">{{ birth }}</view>
 				</picker>
@@ -80,7 +77,9 @@ export default {
 		this.loadUser();
 	},
 	methods: {
-		emailChange() {},
+		emailChange() {
+			
+		},
 		async loadUser() {
 			var that = this;
 			var res = await api.loadUser(auth.getUId());

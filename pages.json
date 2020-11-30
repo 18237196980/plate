@@ -75,6 +75,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/car/car",
+            "style": {
+            	"navigationBarTitleText": "车辆",
+            	"navigationBarBackgroundColor": "#435377",
+				"enablePullDownRefresh": true
+            }
+            
+        }
     ],
 	"tabBar": {
 		"color": "#666",
@@ -92,6 +101,12 @@
 				"iconPath": "static/icon_me_normal.png",
 				"selectedIconPath": "static/icon_me_press.png",
 				"text": "测"
+			},
+			{
+				"pagePath": "pages/car/car",
+				"iconPath": "static/icon_car_normal.png",
+				"selectedIconPath": "static/icon_car_press.png",
+				"text": "车辆"
 			},
 			{
 				"pagePath": "pages/me/me/me",

@@ -80,7 +80,6 @@ export default {
 		},
 		//app第三方登录
 		handleThirdLoginApp() {
-			
 			var that = this;
 			uni.login({
 				provider: 'weixin',
@@ -112,9 +111,7 @@ export default {
 			var res = await api.loginWeiXin(params);
 			if (res.code === 1) {
 				auth.saveLoginInfo(res.data.user, res.data.user.id, res.data.token);
-				setTimeout(function() {
-					that.gotoMain();
-				}, 10);
+				that.gotoMain();
 			} else {
 				util.showToast(res.message);
 			}

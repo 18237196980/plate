@@ -1,0 +1,14 @@
+.uni-padding-wrap{
+	width:690rpx;
+	padding:0 30rpx;
+}
+.uni-common-mt{
+	margin-top:30rpx;
+}
+/* loadmore */
+.uni-loadmore{
+	height:80rpx;
+	line-height:80rpx;
+	text-align:center;
+	padding-bottom:30rpx;
+}

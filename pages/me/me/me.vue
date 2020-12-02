@@ -20,7 +20,7 @@ import uniListItem from '@/components/uni-list-item/uni-list-item.vue';
 
 const api = require('@/common/api.js');
 const util = require('@/common/util.js');
-const config = require('../../../config.js');
+const config = require('@/config.js');
 const auth = require('@/common/auth.js');
 
 export default {
@@ -48,7 +48,8 @@ export default {
 				this.header_path = user.header_path;
 			}
 		}
-		this.name = util.isEmpty(user.name) ? user.nickName : 'Tom';
+		console.log("this.header_path:"+this.header_path)
+		this.name = util.isEmpty(user.name) ? user.nickName : user.name;
 	},
 	methods: {
 		myDetail(){

@@ -84,7 +84,7 @@ export default {
 			// 后台生成短信验证码
 			var res = await api.getPhoneCode(this.phone, this.code_flag);
 			if (res.code === 1) {
-				util.showToast('验证码已发送');
+				util.showToast('验证码已发送:'+res.data);
 
 				this.sending_flag = true; // 在发送验证码状态
 				this.rightPhone = false;

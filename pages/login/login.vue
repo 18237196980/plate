@@ -3,15 +3,25 @@
 		<view class="loginInner">
 			<view class="login_header">
 				<view class="login_header_title">
-					<a href="javascript:;" :class="{ on: loginWay }" @click="loginWay = true">短信登录</a>
-					<a href="javascript:;" :class="{ on: !loginWay }" @click="loginWay = false">密码登录</a>
+					<a href="javascript:;" :class="{ on: loginWay }" @click="loginWay = true">密码登录</a>
+					<a href="javascript:;" :class="{ on: !loginWay }" @click="loginWay = false">短信登录</a>
 				</view>
 			</view>
 			<!-- 内容部分 -->
 			<view class="login_content">
 				<form>
-					<!-- 短信登录 -->
+					<!-- 密码登录 -->
 					<view :class="{ on: loginWay }" class="loginform">
+						<section class="login_message"><input type="text" maxlength="11" placeholder-class="p-class" placeholder="用户名" v-model="name" /></section>
+						<section class="login_verification">
+							<input type="text" maxlength="16" placeholder="密码" placeholder-class="p-class" v-if="showPwd" v-model="pwd" />
+							<input type="password" maxlength="16" placeholder="密码" placeholder-class="p-class" v-else v-model="pwd" />
+							<image class="float-pwd-image" src="../../static/pwd.png" v-if="!showPwd" @click="showPwd = !showPwd"></image>
+							<image class="float-pwd-image" src="../../static/pwd-open.png" v-else @click="showPwd = !showPwd"></image>
+						</section>
+					</view>
+					<!-- 短信登录 -->
+					<view :class="{ on: !loginWay }" class="loginform">
 						<section class="login_message">
 							<input type="number" maxlength="11" placeholder-class="p-class" placeholder="手机号" v-model="phone" @input="change" />
 							<button :disabled="!rightPhone" :class="[rightPhone ? 'get_verification_right_phone' : 'get_verification']" @click.stop="getCode">
@@ -25,20 +35,8 @@
 							<a href="javascript:;">《用户服务协议》</a>
 						</section>
 					</view>
-					<!-- 密码登录 -->
-					<view :class="{ on: !loginWay }" class="loginform">
-						<section class="login_message"><input type="text" maxlength="11" placeholder-class="p-class" placeholder="手机号/用户名" v-model="name" /></section>
-						<section class="login_verification">
-							<input type="text" maxlength="16" placeholder="密码" placeholder-class="p-class" v-if="showPwd" v-model="pwd" />
-							<input type="password" maxlength="16" placeholder="密码" placeholder-class="p-class" v-else v-model="pwd" />
-							<image class="float-pwd-image" src="../../static/pwd.png" v-if="!showPwd" @click="showPwd = !showPwd"></image>
-							<image class="float-pwd-image" src="../../static/pwd-open.png" v-else @click="showPwd = !showPwd"></image>
-						</section>
-					</view>
 					<button class="login_submit" @click="login_submit">登录</button>
-					<view class="goRegister" hover-class="go_reg_click" @click="toRegPage">
-						免费注册
-					</view>
+					<view class="goRegister" hover-class="go_reg_click" @click="toRegPage">免费注册</view>
 					<view class="aline"></view>
 					<view class="flex-row justify-center other-login">
 						<image class="wx" src="../../static/wx.png" @click="loginByWX"></image>
@@ -72,7 +70,7 @@ export default {
 	},
 	computed: {},
 	methods: {
-		loginByQQ(){
+		loginByQQ() {
 			util.showToast('开发中...');
 		},
 		loginByWX() {
@@ -139,9 +137,9 @@ export default {
 		},
 		login_submit() {
 			if (this.loginWay) {
-				this.loginByPhone();
-			} else {
 				this.loginByPwd();
+			} else {
+				this.loginByPhone();
 			}
 		},
 		// 从后台获取验证码
@@ -150,7 +148,7 @@ export default {
 			// 后台生成短信验证码
 			var res = await api.getPhoneCode(this.phone, this.code_flag);
 			if (res.code === 1) {
-				util.showToast('验证码已发送'+res.data);
+				util.showToast('验证码已发送:' + res.data);
 
 				this.sending_flag = true; // 在发送验证码状态
 				this.rightPhone = false;
@@ -229,8 +227,8 @@ export default {
 
 <style scoped>
 .aline {
-    background-color:#f5f4f4;
-    height:1px;
+	background-color: #f5f4f4;
+	height: 1px;
 	margin-top: 120upx;
 }
 .other-login {
@@ -241,10 +239,10 @@ export default {
 	width: 100upx;
 	height: 100upx;
 }
-.wx{
+.wx {
 	margin-right: 30upx;
 }
-.qq{
+.qq {
 	margin-left: 30upx;
 }
 
@@ -266,7 +264,7 @@ export default {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	
+
 	width: 150upx;
 	height: 50upx;
 	float: right;

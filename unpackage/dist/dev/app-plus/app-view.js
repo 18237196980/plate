@@ -4777,7 +4777,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("短信登录")]
+                    [_vm._v("密码登录")]
                   ),
                   _c(
                     "a",
@@ -4790,7 +4790,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("密码登录")]
+                    [_vm._v("短信登录")]
                   )
                 ],
                 1
@@ -4820,106 +4820,16 @@ var render = function() {
                         [
                           _c("v-uni-input", {
                             attrs: {
-                              type: "number",
-                              maxlength: "11",
-                              "placeholder-class": "p-class",
-                              placeholder: "手机号",
-                              _i: 10
-                            },
-                            on: {
-                              input: function($event) {
-                                return _vm.$handleViewEvent($event)
-                              }
-                            },
-                            model: {
-                              value: _vm._$g(10, "v-model"),
-                              callback: function() {},
-                              expression: "phone"
-                            }
-                          }),
-                          _c(
-                            "v-uni-button",
-                            {
-                              class: _vm._$g(11, "c"),
-                              attrs: {
-                                disabled: _vm._$g(11, "a-disabled"),
-                                _i: 11
-                              },
-                              on: {
-                                click: function($event) {
-                                  return _vm.$handleViewEvent($event, {
-                                    stop: true
-                                  })
-                                }
-                              }
-                            },
-                            [_vm._v(_vm._$g(11, "t0-0"))]
-                          )
-                        ],
-                        1
-                      ),
-                      _c(
-                        "section",
-                        { staticClass: _vm._$g(12, "sc"), attrs: { _i: 12 } },
-                        [
-                          _c("v-uni-input", {
-                            attrs: {
-                              type: "number",
-                              maxlength: "4",
-                              "placeholder-class": "p-class",
-                              placeholder: "验证码",
-                              _i: 13
-                            },
-                            model: {
-                              value: _vm._$g(13, "v-model"),
-                              callback: function($$v) {
-                                _vm.$handleVModelEvent(13, $$v)
-                              },
-                              expression: "code"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _c(
-                        "section",
-                        { staticClass: _vm._$g(14, "sc"), attrs: { _i: 14 } },
-                        [
-                          _vm._v("温馨提示：登录即表示您已阅读、理解并同意"),
-                          _c("br", { attrs: { _i: 15 } }),
-                          _c("a", { attrs: { href: "javascript:;", _i: 16 } }, [
-                            _vm._v("《用户服务协议》")
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _c(
-                    "v-uni-view",
-                    {
-                      staticClass: _vm._$g(17, "sc"),
-                      class: _vm._$g(17, "c"),
-                      attrs: { _i: 17 }
-                    },
-                    [
-                      _c(
-                        "section",
-                        { staticClass: _vm._$g(18, "sc"), attrs: { _i: 18 } },
-                        [
-                          _c("v-uni-input", {
-                            attrs: {
                               type: "text",
                               maxlength: "11",
                               "placeholder-class": "p-class",
-                              placeholder: "手机号/用户名",
-                              _i: 19
+                              placeholder: "用户名",
+                              _i: 10
                             },
                             model: {
-                              value: _vm._$g(19, "v-model"),
+                              value: _vm._$g(10, "v-model"),
                               callback: function($$v) {
-                                _vm.$handleVModelEvent(19, $$v)
+                                _vm.$handleVModelEvent(10, $$v)
                               },
                               expression: "name"
                             }
@@ -4929,21 +4839,21 @@ var render = function() {
                       ),
                       _c(
                         "section",
-                        { staticClass: _vm._$g(20, "sc"), attrs: { _i: 20 } },
+                        { staticClass: _vm._$g(11, "sc"), attrs: { _i: 11 } },
                         [
-                          _vm._$g(21, "i")
+                          _vm._$g(12, "i")
                             ? _c("v-uni-input", {
                                 attrs: {
                                   type: "text",
                                   maxlength: "16",
                                   placeholder: "密码",
                                   "placeholder-class": "p-class",
-                                  _i: 21
+                                  _i: 12
                                 },
                                 model: {
-                                  value: _vm._$g(21, "v-model"),
+                                  value: _vm._$g(12, "v-model"),
                                   callback: function($$v) {
-                                    _vm.$handleVModelEvent(21, $$v)
+                                    _vm.$handleVModelEvent(12, $$v)
                                   },
                                   expression: "pwd"
                                 }
@@ -4954,20 +4864,20 @@ var render = function() {
                                   maxlength: "16",
                                   placeholder: "密码",
                                   "placeholder-class": "p-class",
-                                  _i: 22
+                                  _i: 13
                                 },
                                 model: {
-                                  value: _vm._$g(22, "v-model"),
+                                  value: _vm._$g(13, "v-model"),
                                   callback: function($$v) {
-                                    _vm.$handleVModelEvent(22, $$v)
+                                    _vm.$handleVModelEvent(13, $$v)
                                   },
                                   expression: "pwd"
                                 }
                               }),
-                          _vm._$g(23, "i")
+                          _vm._$g(14, "i")
                             ? _c("v-uni-image", {
-                                staticClass: _vm._$g(23, "sc"),
-                                attrs: { src: _vm._$g(23, "a-src"), _i: 23 },
+                                staticClass: _vm._$g(14, "sc"),
+                                attrs: { src: _vm._$g(14, "a-src"), _i: 14 },
                                 on: {
                                   click: function($event) {
                                     return _vm.$handleViewEvent($event)
@@ -4975,14 +4885,104 @@ var render = function() {
                                 }
                               })
                             : _c("v-uni-image", {
-                                staticClass: _vm._$g(24, "sc"),
-                                attrs: { src: _vm._$g(24, "a-src"), _i: 24 },
+                                staticClass: _vm._$g(15, "sc"),
+                                attrs: { src: _vm._$g(15, "a-src"), _i: 15 },
                                 on: {
                                   click: function($event) {
                                     return _vm.$handleViewEvent($event)
                                   }
                                 }
                               })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _c(
+                    "v-uni-view",
+                    {
+                      staticClass: _vm._$g(16, "sc"),
+                      class: _vm._$g(16, "c"),
+                      attrs: { _i: 16 }
+                    },
+                    [
+                      _c(
+                        "section",
+                        { staticClass: _vm._$g(17, "sc"), attrs: { _i: 17 } },
+                        [
+                          _c("v-uni-input", {
+                            attrs: {
+                              type: "number",
+                              maxlength: "11",
+                              "placeholder-class": "p-class",
+                              placeholder: "手机号",
+                              _i: 18
+                            },
+                            on: {
+                              input: function($event) {
+                                return _vm.$handleViewEvent($event)
+                              }
+                            },
+                            model: {
+                              value: _vm._$g(18, "v-model"),
+                              callback: function() {},
+                              expression: "phone"
+                            }
+                          }),
+                          _c(
+                            "v-uni-button",
+                            {
+                              class: _vm._$g(19, "c"),
+                              attrs: {
+                                disabled: _vm._$g(19, "a-disabled"),
+                                _i: 19
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.$handleViewEvent($event, {
+                                    stop: true
+                                  })
+                                }
+                              }
+                            },
+                            [_vm._v(_vm._$g(19, "t0-0"))]
+                          )
+                        ],
+                        1
+                      ),
+                      _c(
+                        "section",
+                        { staticClass: _vm._$g(20, "sc"), attrs: { _i: 20 } },
+                        [
+                          _c("v-uni-input", {
+                            attrs: {
+                              type: "number",
+                              maxlength: "4",
+                              "placeholder-class": "p-class",
+                              placeholder: "验证码",
+                              _i: 21
+                            },
+                            model: {
+                              value: _vm._$g(21, "v-model"),
+                              callback: function($$v) {
+                                _vm.$handleVModelEvent(21, $$v)
+                              },
+                              expression: "code"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _c(
+                        "section",
+                        { staticClass: _vm._$g(22, "sc"), attrs: { _i: 22 } },
+                        [
+                          _vm._v("温馨提示：登录即表示您已阅读、理解并同意"),
+                          _c("br", { attrs: { _i: 23 } }),
+                          _c("a", { attrs: { href: "javascript:;", _i: 24 } }, [
+                            _vm._v("《用户服务协议》")
+                          ])
                         ],
                         1
                       )
@@ -5145,7 +5145,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ 19);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.aline[data-v-5b26a3ac] {\r\n    background-color:#f5f4f4;\r\n    height:1px;\r\n\tmargin-top: 120upx;\n}\n.other-login[data-v-5b26a3ac] {\r\n\t-webkit-box-align: center;\r\n\t-webkit-align-items: center;\r\n\t        align-items: center;\r\n\tmargin-top: 40upx;\n}\n.other-login uni-image[data-v-5b26a3ac] {\r\n\twidth: 100upx;\r\n\theight: 100upx;\n}\n.wx[data-v-5b26a3ac]{\r\n\tmargin-right: 30upx;\n}\n.qq[data-v-5b26a3ac]{\r\n\tmargin-left: 30upx;\n}\n.float-pwd-image[data-v-5b26a3ac] {\r\n\twidth: 50upx;\r\n\theight: 40upx;\r\n\r\n\tposition: absolute;\r\n\ttop: 50%;\r\n\tright: 10px;\r\n\t-webkit-transform: translateY(-50%);\r\n\t        transform: translateY(-50%);\r\n\tborder: none;\r\n\tbackground: transparent;\r\n\tz-index: 399;\n}\r\n/* 去注册 */\n.goRegister[data-v-5b26a3ac] {\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: center;\r\n\t-webkit-justify-content: center;\r\n\t        justify-content: center;\r\n\t-webkit-box-align: center;\r\n\t-webkit-align-items: center;\r\n\t        align-items: center;\r\n\t\r\n\twidth: 150upx;\r\n\theight: 50upx;\r\n\tfloat: right;\r\n\tmargin: 30upx 0;\r\n\tfont-size: 30upx;\r\n\tfont-weight: 500;\r\n\tcolor: #a6a7a1;\n}\n.go_reg_click[data-v-5b26a3ac] {\r\n\tcolor: #0c61fe;\n}\n.loginContainer[data-v-5b26a3ac] {\r\n\twidth: 100%;\r\n\theight: 100%;\r\n\tbackground: #fff;\n}\n.loginInner[data-v-5b26a3ac] {\r\n\twidth: 80%;\r\n\tmargin: 0 auto;\r\n\tpadding-top: 120upx;\n}\n.loginInner .login_header .login_logo[data-v-5b26a3ac] {\r\n\tcolor: #0faeff;\r\n\tfont-weight: bolder;\r\n\tfont-size: 80upx;\r\n\ttext-align: center;\n}\n.login_header .login_header_title[data-v-5b26a3ac] {\r\n\ttext-align: center;\r\n\tpadding-top: 80upx;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: center;\r\n\t-webkit-justify-content: center;\r\n\t        justify-content: center;\r\n\t-webkit-box-align: center;\r\n\t-webkit-align-items: center;\r\n\t        align-items: center;\n}\n.login_header_title a[data-v-5b26a3ac] {\r\n\ttext-decoration: none;\r\n\tfont-size: 28upx;\r\n\tcolor: #333;\r\n\tpadding-bottom: 8upx;\n}\n.login_header_title a[data-v-5b26a3ac]:first-child {\r\n\tmargin-right: 80upx;\n}\n.login_header_title a.on[data-v-5b26a3ac] {\r\n\tcolor: #0faeff;\r\n\tfont-weight: bolder;\r\n\tborder-bottom: 4upx solid #0faeff;\n}\n.login_content uni-form .loginform[data-v-5b26a3ac] {\r\n\tdisplay: none;\n}\n.login_content uni-form .loginform.on[data-v-5b26a3ac] {\r\n\tdisplay: block;\n}\n.login_content uni-form uni-input[data-v-5b26a3ac] {\r\n\twidth: 100%;\r\n\theight: 100%;\r\n\tborder: 1px solid #ddd;\r\n\t-webkit-border-radius: 8upx;\r\n\t        border-radius: 8upx;\r\n\toutline: none;\r\n\tpadding-left: 20upx;\r\n\t-webkit-box-sizing: border-box;\r\n\t        box-sizing: border-box;\n}\r\n/* .login_content form input:focus {\r\n\tborder: 2upx solid #0faeff;\r\n} */\n.login_message[data-v-5b26a3ac] {\r\n\tposition: relative;\r\n\tmargin-top: 32upx;\r\n\theight: 96upx;\r\n\tfont-size: 28upx;\r\n\tbackground: #fff;\n}\n.get_verification[data-v-5b26a3ac] {\r\n\tposition: absolute;\r\n\ttop: 50%;\r\n\tright: 20upx;\r\n\t-webkit-transform: translateY(-50%);\r\n\t        transform: translateY(-50%);\r\n\tborder: none;\r\n\tcolor: #ccc;\r\n\tbackground: transparent;\r\n\tfont-size: 28upx;\r\n\tz-index: 200;\n}\n.get_verification_right_phone[data-v-5b26a3ac] {\r\n\tz-index: 200;\r\n\tposition: absolute;\r\n\ttop: 50%;\r\n\tright: 10px;\r\n\t-webkit-transform: translateY(-50%);\r\n\t        transform: translateY(-50%);\r\n\tborder: none;\r\n\tbackground: transparent;\r\n\tfont-size: 28upx;\r\n\tcolor: #4dab01;\n}\n.login_hint[data-v-5b26a3ac] {\r\n\ttext-align: center;\r\n\tcolor: #999;\r\n\tmargin-top: 28upx;\r\n\tfont-size: 28upx;\r\n\tline-height: 40upx;\n}\n.login_hint a[data-v-5b26a3ac] {\r\n\ttext-decoration: none;\r\n\tcolor: #0faeff;\n}\n.login_verification[data-v-5b26a3ac] {\r\n\tposition: relative;\r\n\tmargin-top: 32upx;\r\n\theight: 96upx;\r\n\tfont-size: 28upx;\r\n\tbackground: #fff;\n}\n.login_verification .switch_button[data-v-5b26a3ac] {\r\n\tborder: 2upx solid #ddd;\r\n\twidth: 60upx;\r\n\theight: 32upx;\r\n\tposition: absolute;\r\n\ttop: 50%;\r\n\tright: 20upx;\r\n\t-webkit-transform: translateY(-50%);\r\n\t        transform: translateY(-50%);\r\n\t-webkit-border-radius: 16upx;\r\n\t        border-radius: 16upx;\r\n\tpadding: 0 12upx;\r\n\tline-height: 32upx;\r\n\tfont-size: 24upx;\r\n\t-webkit-transition: background-color 0.3s;\r\n\ttransition: background-color 0.3s;\n}\n.login_verification .switch_button.on[data-v-5b26a3ac] {\r\n\tbackground: #0faeff;\n}\n.login_verification .switch_button.off[data-v-5b26a3ac] {\r\n\tbackground: #fff;\n}\n.switch_button .switch_circle[data-v-5b26a3ac] {\r\n\tbackground: #fff;\r\n\tborder: 2upx solid #ddd;\r\n\t-webkit-border-radius: 50%;\r\n\t        border-radius: 50%;\r\n\twidth: 32upx;\r\n\theight: 32upx;\r\n\tposition: absolute;\r\n\tleft: -2upx;\r\n\ttop: -2upx;\r\n\t-webkit-box-shadow: 0 4upx 8upx 0 rgba(0, 0, 0, 0.1);\r\n\t        box-shadow: 0 4upx 8upx 0 rgba(0, 0, 0, 0.1);\n}\n.switch_button .switch_circle.right[data-v-5b26a3ac] {\r\n\t-webkit-transform: translateX(60upx);\r\n\t        transform: translateX(60upx);\n}\n.switch_button .switch_text[data-v-5b26a3ac] {\r\n\tcolor: #ddd;\r\n\tmargin-left: 5upx;\n}\n.login_submit[data-v-5b26a3ac] {\r\n\tdisplay: block;\r\n\twidth: 100%;\r\n\theight: 84upx;\r\n\tmargin-top: 60upx;\r\n\tbackground: #0faeff;\r\n\t-webkit-border-radius: 8upx;\r\n\t        border-radius: 8upx;\r\n\tfont-size: 32upx;\r\n\tline-height: 84upx;\r\n\tcolor: #fff;\r\n\ttext-align: center;\r\n\tborder: none;\n}\n.register[data-v-5b26a3ac] {\r\n\tfont-size: 28upx;\r\n\tcolor: #999;\r\n\tposition: fixed;\r\n\tbottom: 40upx;\r\n\twidth: 100%;\r\n\ttext-align: center;\n}\n.register a[data-v-5b26a3ac] {\r\n\ttext-decoration: none;\r\n\tcolor: #0faeff;\n}\n.forgetPwd[data-v-5b26a3ac] {\r\n\ttext-align: right;\r\n\tfont-size: 28upx;\r\n\tpadding-top: 30upx;\n}\n.forgetPwd a[data-v-5b26a3ac] {\r\n\ttext-decoration: none;\r\n\tcolor: #0faeff;\n}\r\n", ""]);
+exports.push([module.i, "\n.aline[data-v-5b26a3ac] {\r\n\tbackground-color: #f5f4f4;\r\n\theight: 1px;\r\n\tmargin-top: 120upx;\n}\n.other-login[data-v-5b26a3ac] {\r\n\t-webkit-box-align: center;\r\n\t-webkit-align-items: center;\r\n\t        align-items: center;\r\n\tmargin-top: 40upx;\n}\n.other-login uni-image[data-v-5b26a3ac] {\r\n\twidth: 100upx;\r\n\theight: 100upx;\n}\n.wx[data-v-5b26a3ac] {\r\n\tmargin-right: 30upx;\n}\n.qq[data-v-5b26a3ac] {\r\n\tmargin-left: 30upx;\n}\n.float-pwd-image[data-v-5b26a3ac] {\r\n\twidth: 50upx;\r\n\theight: 40upx;\r\n\r\n\tposition: absolute;\r\n\ttop: 50%;\r\n\tright: 10px;\r\n\t-webkit-transform: translateY(-50%);\r\n\t        transform: translateY(-50%);\r\n\tborder: none;\r\n\tbackground: transparent;\r\n\tz-index: 399;\n}\r\n/* 去注册 */\n.goRegister[data-v-5b26a3ac] {\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: center;\r\n\t-webkit-justify-content: center;\r\n\t        justify-content: center;\r\n\t-webkit-box-align: center;\r\n\t-webkit-align-items: center;\r\n\t        align-items: center;\r\n\r\n\twidth: 150upx;\r\n\theight: 50upx;\r\n\tfloat: right;\r\n\tmargin: 30upx 0;\r\n\tfont-size: 30upx;\r\n\tfont-weight: 500;\r\n\tcolor: #a6a7a1;\n}\n.go_reg_click[data-v-5b26a3ac] {\r\n\tcolor: #0c61fe;\n}\n.loginContainer[data-v-5b26a3ac] {\r\n\twidth: 100%;\r\n\theight: 100%;\r\n\tbackground: #fff;\n}\n.loginInner[data-v-5b26a3ac] {\r\n\twidth: 80%;\r\n\tmargin: 0 auto;\r\n\tpadding-top: 120upx;\n}\n.loginInner .login_header .login_logo[data-v-5b26a3ac] {\r\n\tcolor: #0faeff;\r\n\tfont-weight: bolder;\r\n\tfont-size: 80upx;\r\n\ttext-align: center;\n}\n.login_header .login_header_title[data-v-5b26a3ac] {\r\n\ttext-align: center;\r\n\tpadding-top: 80upx;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: center;\r\n\t-webkit-justify-content: center;\r\n\t        justify-content: center;\r\n\t-webkit-box-align: center;\r\n\t-webkit-align-items: center;\r\n\t        align-items: center;\n}\n.login_header_title a[data-v-5b26a3ac] {\r\n\ttext-decoration: none;\r\n\tfont-size: 28upx;\r\n\tcolor: #333;\r\n\tpadding-bottom: 8upx;\n}\n.login_header_title a[data-v-5b26a3ac]:first-child {\r\n\tmargin-right: 80upx;\n}\n.login_header_title a.on[data-v-5b26a3ac] {\r\n\tcolor: #0faeff;\r\n\tfont-weight: bolder;\r\n\tborder-bottom: 4upx solid #0faeff;\n}\n.login_content uni-form .loginform[data-v-5b26a3ac] {\r\n\tdisplay: none;\n}\n.login_content uni-form .loginform.on[data-v-5b26a3ac] {\r\n\tdisplay: block;\n}\n.login_content uni-form uni-input[data-v-5b26a3ac] {\r\n\twidth: 100%;\r\n\theight: 100%;\r\n\tborder: 1px solid #ddd;\r\n\t-webkit-border-radius: 8upx;\r\n\t        border-radius: 8upx;\r\n\toutline: none;\r\n\tpadding-left: 20upx;\r\n\t-webkit-box-sizing: border-box;\r\n\t        box-sizing: border-box;\n}\r\n/* .login_content form input:focus {\r\n\tborder: 2upx solid #0faeff;\r\n} */\n.login_message[data-v-5b26a3ac] {\r\n\tposition: relative;\r\n\tmargin-top: 32upx;\r\n\theight: 96upx;\r\n\tfont-size: 28upx;\r\n\tbackground: #fff;\n}\n.get_verification[data-v-5b26a3ac] {\r\n\tposition: absolute;\r\n\ttop: 50%;\r\n\tright: 20upx;\r\n\t-webkit-transform: translateY(-50%);\r\n\t        transform: translateY(-50%);\r\n\tborder: none;\r\n\tcolor: #ccc;\r\n\tbackground: transparent;\r\n\tfont-size: 28upx;\r\n\tz-index: 200;\n}\n.get_verification_right_phone[data-v-5b26a3ac] {\r\n\tz-index: 200;\r\n\tposition: absolute;\r\n\ttop: 50%;\r\n\tright: 10px;\r\n\t-webkit-transform: translateY(-50%);\r\n\t        transform: translateY(-50%);\r\n\tborder: none;\r\n\tbackground: transparent;\r\n\tfont-size: 28upx;\r\n\tcolor: #4dab01;\n}\n.login_hint[data-v-5b26a3ac] {\r\n\ttext-align: center;\r\n\tcolor: #999;\r\n\tmargin-top: 28upx;\r\n\tfont-size: 28upx;\r\n\tline-height: 40upx;\n}\n.login_hint a[data-v-5b26a3ac] {\r\n\ttext-decoration: none;\r\n\tcolor: #0faeff;\n}\n.login_verification[data-v-5b26a3ac] {\r\n\tposition: relative;\r\n\tmargin-top: 32upx;\r\n\theight: 96upx;\r\n\tfont-size: 28upx;\r\n\tbackground: #fff;\n}\n.login_verification .switch_button[data-v-5b26a3ac] {\r\n\tborder: 2upx solid #ddd;\r\n\twidth: 60upx;\r\n\theight: 32upx;\r\n\tposition: absolute;\r\n\ttop: 50%;\r\n\tright: 20upx;\r\n\t-webkit-transform: translateY(-50%);\r\n\t        transform: translateY(-50%);\r\n\t-webkit-border-radius: 16upx;\r\n\t        border-radius: 16upx;\r\n\tpadding: 0 12upx;\r\n\tline-height: 32upx;\r\n\tfont-size: 24upx;\r\n\t-webkit-transition: background-color 0.3s;\r\n\ttransition: background-color 0.3s;\n}\n.login_verification .switch_button.on[data-v-5b26a3ac] {\r\n\tbackground: #0faeff;\n}\n.login_verification .switch_button.off[data-v-5b26a3ac] {\r\n\tbackground: #fff;\n}\n.switch_button .switch_circle[data-v-5b26a3ac] {\r\n\tbackground: #fff;\r\n\tborder: 2upx solid #ddd;\r\n\t-webkit-border-radius: 50%;\r\n\t        border-radius: 50%;\r\n\twidth: 32upx;\r\n\theight: 32upx;\r\n\tposition: absolute;\r\n\tleft: -2upx;\r\n\ttop: -2upx;\r\n\t-webkit-box-shadow: 0 4upx 8upx 0 rgba(0, 0, 0, 0.1);\r\n\t        box-shadow: 0 4upx 8upx 0 rgba(0, 0, 0, 0.1);\n}\n.switch_button .switch_circle.right[data-v-5b26a3ac] {\r\n\t-webkit-transform: translateX(60upx);\r\n\t        transform: translateX(60upx);\n}\n.switch_button .switch_text[data-v-5b26a3ac] {\r\n\tcolor: #ddd;\r\n\tmargin-left: 5upx;\n}\n.login_submit[data-v-5b26a3ac] {\r\n\tdisplay: block;\r\n\twidth: 100%;\r\n\theight: 84upx;\r\n\tmargin-top: 60upx;\r\n\tbackground: #0faeff;\r\n\t-webkit-border-radius: 8upx;\r\n\t        border-radius: 8upx;\r\n\tfont-size: 32upx;\r\n\tline-height: 84upx;\r\n\tcolor: #fff;\r\n\ttext-align: center;\r\n\tborder: none;\n}\n.register[data-v-5b26a3ac] {\r\n\tfont-size: 28upx;\r\n\tcolor: #999;\r\n\tposition: fixed;\r\n\tbottom: 40upx;\r\n\twidth: 100%;\r\n\ttext-align: center;\n}\n.register a[data-v-5b26a3ac] {\r\n\ttext-decoration: none;\r\n\tcolor: #0faeff;\n}\n.forgetPwd[data-v-5b26a3ac] {\r\n\ttext-align: right;\r\n\tfont-size: 28upx;\r\n\tpadding-top: 30upx;\n}\n.forgetPwd a[data-v-5b26a3ac] {\r\n\ttext-decoration: none;\r\n\tcolor: #0faeff;\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 

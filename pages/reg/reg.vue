@@ -7,7 +7,9 @@
 				<form @submit="register">
 					<!-- 短信登录 -->
 					<div>
-						<section class="register_message"><input type="tel" maxlength="11" placeholder-class="p-class" placeholder="用户名(2-8位英文)" v-model="name" /></section>
+						<section class="register_message">
+							<input type="text" @blur="checkName" maxlength="11" placeholder-class="p-class" placeholder="用户名(2-8位英文)" v-model="name" />
+						</section>
 						<section class="register_verification">
 							<input type="text" maxlength="16" placeholder-class="p-class" placeholder="密码(8-16位数字和字母)" v-if="showPwd" v-model="pwd" />
 							<input type="password" maxlength="16" placeholder-class="p-class" placeholder="密码(8-16位数字和字母)" v-else v-model="pwd" />
@@ -16,7 +18,7 @@
 							<input type="text" maxlength="16" placeholder-class="p-class" placeholder="重复密码(8-16位数字和字母)" v-if="showPwd1" v-model="re_pwd" />
 							<input type="password" maxlength="16" placeholder-class="p-class" placeholder="重复密码(8-16位数字和字母)" v-else v-model="re_pwd" />
 						</section>
-						
+
 						<section class="register_message">
 							<input type="number" maxlength="11" placeholder-class="p-class" placeholder="手机号" v-model="phone" @input="change" />
 							<button :disabled="!rightPhone" :class="[rightPhone ? 'get_verification_right_phone' : 'get_verification']" @click.prevent="getCode">
@@ -24,7 +26,7 @@
 							</button>
 						</section>
 						<section class="register_verification"><input type="number" maxlength="4" placeholder-class="p-class" placeholder="验证码" v-model="code" /></section>
-						
+
 						<section class="register_hint">
 							温馨提示：注册即表示您已阅读、理解并同意
 							<br />
@@ -63,8 +65,23 @@ export default {
 			sending_flag: false // 是否正在倒计时（倒计时时修改手机号，不允许发送验证码）
 		};
 	},
+	watch: {
+		/* name(new_val, old_val) {
+			if (new_val == 'aa') {
+				util.showToast('用户名已使用');
+			}
+		} */
+	},
 	computed: {},
 	methods: {
+		async checkName() {
+			if (!util.isEmpty(this.name)) {
+				var res = await api.canUseName(this.name);
+				if (res.code === 0) {
+					util.showToast('用户名不可用');
+				}
+			}
+		},
 		toRegPage() {
 			uni.redirectTo({
 				url: '/pages/login/login'
@@ -84,7 +101,7 @@ export default {
 			// 后台生成短信验证码
 			var res = await api.getPhoneCode(this.phone, this.code_flag);
 			if (res.code === 1) {
-				util.showToast('验证码已发送:'+res.data);
+				util.showToast('验证码已发送:' + res.data);
 
 				this.sending_flag = true; // 在发送验证码状态
 				this.rightPhone = false;
@@ -104,11 +121,11 @@ export default {
 			}
 		},
 		register_submit() {
-			console.log("aaaaa")
+			console.log('aaaaa');
 			this.register();
 		},
 		async register() {
-			console.log("bbbbb")
+			console.log('bbbbb');
 			uni.showLoading({
 				title: '正在注册...'
 			});
@@ -167,7 +184,7 @@ export default {
 				uni.redirectTo({
 					url: '/pages/login/login'
 				});
-			}else{
+			} else {
 				uni.hideLoading();
 				util.showToast(res.message);
 				return false;
@@ -183,7 +200,7 @@ export default {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	
+
 	width: 150upx;
 	height: 50upx;
 	float: right;
@@ -195,8 +212,7 @@ export default {
 .go_reg_click {
 	color: #0c61fe;
 }
-	
-	
+
 .registerContainer {
 	width: 100%;
 	height: 100%;

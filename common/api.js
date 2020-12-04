@@ -31,6 +31,12 @@ export function logout(uid) {
 	return net.post(url)
 }
 
+// 注册时，校验用户名是否可以
+export function canUseName(name) {
+	let url = `/plate/user/canUseName?name=${name}`
+	return net.post(url)
+}
+
 // 根据id查询用户
 export function loadUser(id) {
 	let url = `/plate/me/me?id=${id}`

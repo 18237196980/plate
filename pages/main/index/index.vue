@@ -144,18 +144,20 @@ export default {
 		},
 		// 下拉刷新
 		async onPullDownRefresh() {
-			this.getData();
+			this.getData(true);
 		},
 		// 请求后台列表数据
-		async getData() {
+		async getData(flag) {
 			let self = this;
 
 			self.showPage = false;
 			self.list = [];
 
-			uni.showLoading({
-				title: '加载中...'
-			});
+			if (!flag){
+				uni.showLoading({
+					title: '加载中...'
+				});
+			}
 
 			let res = await api.plateList(this.pageNumber, this.pageSize, this.searchParam);
 
@@ -169,6 +171,8 @@ export default {
 				if (total <= 0) {
 					util.showToast('没有相关车辆信息');
 					return;
+				}else{
+					util.showToast('总共条数:'+total);
 				}
 				for (var i = 0; i < rows.length; i++) {
 					var item = rows[i];

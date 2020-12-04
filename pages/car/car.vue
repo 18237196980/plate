@@ -1,6 +1,6 @@
 <template>
 	<view class="container">
-		<view class="search"><uni-search-bar @confirm="search" @input="input" @cancel="cancel" /></view>
+		<view class="search"><uni-search-bar @confirm="search" @input="input" @cancel="cancel" cancelText="重置" /></view>
 		<!-- <view class="uni-padding-wrap uni-common-mt">
 			<view class="text" v-for="(num, index) in data" :key="index">list - {{ num }}</view>
 			<view class="uni-loadmore" v-if="showLoadMore">{{ loadMoreText }}</view>
@@ -98,6 +98,7 @@ export default {
 			this.reset();
 		},
 		search() {
+			uni.showLoading()
 			this.reset();
 		},
 
@@ -108,6 +109,7 @@ export default {
 			let res = await api.plateList(this.pageNumber, this.pageSize, this.searchParam);
 
 			if (res.code == 1) {
+				uni.hideLoading()
 				uni.stopPullDownRefresh();
 				uni.hideKeyboard();
 

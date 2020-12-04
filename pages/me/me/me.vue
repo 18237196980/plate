@@ -48,7 +48,6 @@ export default {
 				this.header_path = user.header_path;
 			}
 		}
-		console.log("this.header_path:"+this.header_path)
 		this.name = util.isEmpty(user.name) ? user.nickName : user.name;
 	},
 	methods: {

@@ -10,7 +10,7 @@ function request(code, data = {}, method = "GET") {
 			url: config.URL + code,
 			data: data,
 			method: method,
-			timeout: 5000,
+			timeout: 50000,
 			header: {
 				'Content-Type': 'application/json',
 				'token': auth.getToken(),

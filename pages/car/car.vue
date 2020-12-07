@@ -1,6 +1,6 @@
 <template>
 	<view class="container">
-		<view class="search"><uni-search-bar @confirm="search" @input="input" @cancel="cancel" cancelText="重置" /></view>
+		<view class="search"><uni-search-bar @confirm="search" :maxlength="maxlength" @input="input" @cancel="cancel" cancelText="重置" /></view>
 		<!-- <view class="uni-padding-wrap uni-common-mt">
 			<view class="text" v-for="(num, index) in data" :key="index">list - {{ num }}</view>
 			<view class="uni-loadmore" v-if="showLoadMore">{{ loadMoreText }}</view>
@@ -58,6 +58,7 @@ export default {
 	},
 	data() {
 		return {
+			maxlength:'7',
 			height: uni.getSystemInfoSync().screenHeight - 200,
 			no_data: false,
 			pageNumber: 1, //当前第几页
@@ -97,9 +98,13 @@ export default {
 			this.searchParam = '';
 			this.reset();
 		},
-		search() {
-			uni.showLoading()
+		async search() {
+			/* uni.showLoading({
+				title: '加载中...'
+			}); */
+			this.showLoadMore = false;
 			this.reset();
+			console.log("this.showLoadMore:"+this.showLoadMore)
 		},
 
 		async initData(more_flag) {
@@ -107,9 +112,8 @@ export default {
 			self.no_data = false;
 
 			let res = await api.plateList(this.pageNumber, this.pageSize, this.searchParam);
-
 			if (res.code == 1) {
-				uni.hideLoading()
+				uni.hideLoading();
 				uni.stopPullDownRefresh();
 				uni.hideKeyboard();
 
@@ -121,6 +125,7 @@ export default {
 						return;
 					} else {
 						this.showLoadMore = true;
+						console.log("就这。。。")
 						self.list = self.list.concat(res.rows);
 					}
 				} else {

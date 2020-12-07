@@ -3,7 +3,7 @@
 		<view class="cu-bar bg-white search">
 			<view class="search-form round">
 				<text class="cuIcon-search"></text>
-				<input type="text" v-model="searchParam" @confirm="doSearch()" placeholder="输入搜索的关键词" @input="change" confirm-type="search" />
+				<input type="text" v-model="searchParam" maxlength="7" @confirm="doSearch()" placeholder="输入搜索的关键词" @input="change" confirm-type="search" />
 				<uni-icons color="#999999" v-if="clear_flag" @click="clearSearch" class="clear_icon" size="23" type="clear" />
 			</view>
 			<view class="action"><button @click="doSearch()" class="cu-btn bg-gradual-green shadow-blur round">搜索</button></view>

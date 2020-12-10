@@ -904,7 +904,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_NAME":"plate","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_NAME":"车管家","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -1935,7 +1935,7 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 129:
+/***/ 110:
 /*!**********************************************************************!*\
   !*** D:/mywork/code/uni-ui-demo/plate/components/uni-icons/icons.js ***!
   \**********************************************************************/
@@ -2077,7 +2077,133 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 168:
+/***/ 123:
+/*!**********************************************************************************!*\
+  !*** D:/mywork/code/uni-ui-demo/plate/components/uni-swipe-action-item/mpwxs.js ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  data: function data() {
+    return {
+      position: [],
+      button: {},
+      btn: "[]" };
+
+  },
+  // computed: {
+  // 	pos() {
+  // 		return JSON.stringify(this.position)
+  // 	},
+  // 	btn() {
+  // 		return JSON.stringify(this.button)
+  // 	}
+  // },
+  watch: {
+    button: {
+      handler: function handler(newVal) {
+        this.btn = JSON.stringify(newVal);
+      },
+      deep: true },
+
+    show: function show(newVal) {
+      if (this.autoClose) return;
+      if (!this.button) {
+        this.init();
+        return;
+      }
+      this.button.show = newVal;
+    },
+    leftOptions: function leftOptions() {
+      this.init();
+    },
+    rightOptions: function rightOptions() {
+      this.init();
+    } },
+
+  created: function created() {
+    if (this.swipeaction.children !== undefined) {
+      this.swipeaction.children.push(this);
+    }
+  },
+  mounted: function mounted() {
+    this.init();
+  },
+  beforeDestroy: function beforeDestroy() {var _this = this;
+    this.swipeaction.children.forEach(function (item, index) {
+      if (item === _this) {
+        _this.swipeaction.children.splice(index, 1);
+      }
+    });
+  },
+  methods: {
+    init: function init() {var _this2 = this;
+      clearTimeout(this.swipetimer);
+      this.swipetimer = setTimeout(function () {
+        _this2.getButtonSize();
+      }, 50);
+    },
+    closeSwipe: function closeSwipe(e) {
+      if (!this.autoClose) return;
+      this.swipeaction.closeOther(this);
+    },
+
+    change: function change(e) {
+      this.$emit('change', e.open);
+      var show = this.button.show;
+      if (show !== e.open) {
+        this.button.show = e.open;
+      }
+
+    },
+
+    appTouchStart: function appTouchStart(e) {var
+
+      clientX =
+      e.changedTouches[0].clientX;
+      this.clientX = clientX;
+      this.timestamp = new Date().getTime();
+    },
+    appTouchEnd: function appTouchEnd(e, index, item, position) {var
+
+      clientX =
+      e.changedTouches[0].clientX;
+      // fixed by xxxx 模拟点击事件，解决 ios 13 点击区域错位的问题
+      var diff = Math.abs(this.clientX - clientX);
+      var time = new Date().getTime() - this.timestamp;
+      if (diff < 40 && time < 300) {
+        this.$emit('click', {
+          content: item,
+          index: index,
+          position: position });
+
+      }
+    },
+    getButtonSize: function getButtonSize() {var _this3 = this;
+      var views = uni.createSelectorQuery().in(this);
+      views.
+      selectAll('.uni-swipe_button-group').
+      boundingClientRect(function (data) {
+        var show = 'none';
+        if (_this3.autoClose) {
+          show = 'none';
+        } else {
+          show = _this3.show;
+        }
+        _this3.button = {
+          data: data,
+          show: show };
+
+      }).
+      exec();
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 161:
 /*!*****************************************************************************!*\
   !*** D:/mywork/code/uni-ui-demo/plate/components/pick-regions/regions.json ***!
   \*****************************************************************************/
@@ -8405,7 +8531,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_NAME":"plate","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_NAME":"车管家","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8426,14 +8552,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_NAME":"plate","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_NAME":"车管家","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_NAME":"plate","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_NAME":"车管家","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -8519,7 +8645,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_NAME":"plate","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_NAME":"车管家","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -8934,7 +9060,7 @@ internalMixin(Vue);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.loginByPwd = loginByPwd;exports.register = register;exports.loginWeiXin = loginWeiXin;exports.loginByToken = loginByToken;exports.logout = logout;exports.loadUser = loadUser;exports.updatePwd = updatePwd;exports.changeHeader = changeHeader;exports.fullUserInfo = fullUserInfo;exports.getPhoneCode = getPhoneCode;exports.loginByPhone = loginByPhone;exports.plateList = plateList;exports.addPlate = addPlate;exports.editPlate = editPlate;exports.del = del;exports.initPlate = initPlate;var net = __webpack_require__(/*! ./net.js */ 21);
+Object.defineProperty(exports, "__esModule", { value: true });exports.loginByPwd = loginByPwd;exports.register = register;exports.loginWeiXin = loginWeiXin;exports.loginByToken = loginByToken;exports.logout = logout;exports.canUseName = canUseName;exports.loadUser = loadUser;exports.getOpedId = getOpedId;exports.updatePwd = updatePwd;exports.changeHeader = changeHeader;exports.fullUserInfo = fullUserInfo;exports.getPhoneCode = getPhoneCode;exports.loginByPhone = loginByPhone;exports.plateList = plateList;exports.addPlate = addPlate;exports.editPlate = editPlate;exports.del = del;exports.initPlate = initPlate;var net = __webpack_require__(/*! ./net.js */ 21);
 var config = __webpack_require__(/*! ../config.js */ 23);
 
 // 密码登陆
@@ -8967,9 +9093,21 @@ function logout(uid) {
   return net.post(url);
 }
 
+// 注册时，校验用户名是否可以
+function canUseName(name) {
+  var url = "/plate/user/canUseName?name=".concat(name);
+  return net.post(url);
+}
+
 // 根据id查询用户
 function loadUser(id) {
   var url = "/plate/me/me?id=".concat(id);
+  return net.post(url);
+}
+
+// 根据code获取openid
+function getOpedId(code) {
+  var url = "/plate/user/getOpedId?code=".concat(code);
   return net.post(url);
 }
 
@@ -9056,7 +9194,7 @@ function request(code) {var data = arguments.length > 1 && arguments[1] !== unde
       url: config.URL + code,
       data: data,
       method: method,
-      timeout: 5000,
+      timeout: 50000,
       header: {
         'Content-Type': 'application/json',
         'token': auth.getToken(),
@@ -9285,12 +9423,8 @@ module.exports = {
 var URL = 'http://192.168.5.27:9876';
 // const URL = 'http://39.99.161.198:9876'
 
-//0常规手机 1手持设备
-var SCAN_MODE = 0;
-
 module.exports = {
-  URL: URL,
-  SCAN_MODE: SCAN_MODE };
+  URL: URL };
 
 /***/ }),
 
@@ -9341,11 +9475,18 @@ function showToast(title) {var icon = arguments.length > 1 && arguments[1] !== u
 
 }
 
+//校验手机号格式
 function isPhone(obj) {
   if (!isEmpty(obj)) {
     return RegExp(/^1[34578]\d{9}$/).test(obj);
   }
   return false;
+}
+
+//校验邮箱格式
+function isEmail(email) {
+  return RegExp(/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/).test(
+  email);
 }
 
 function isEmpty(obj) {
@@ -9444,7 +9585,8 @@ module.exports = {
   dateUtils: dateUtils,
   isEmpty: isEmpty,
   isEmptyString: isEmptyString,
-  isPhone: isPhone };
+  isPhone: isPhone,
+  isEmail: isEmail };
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
@@ -9488,132 +9630,6 @@ module.exports = g;
 /***/ (function(module, exports) {
 
 
-
-/***/ }),
-
-/***/ 91:
-/*!**********************************************************************************!*\
-  !*** D:/mywork/code/uni-ui-demo/plate/components/uni-swipe-action-item/mpwxs.js ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
-  data: function data() {
-    return {
-      position: [],
-      button: {},
-      btn: "[]" };
-
-  },
-  // computed: {
-  // 	pos() {
-  // 		return JSON.stringify(this.position)
-  // 	},
-  // 	btn() {
-  // 		return JSON.stringify(this.button)
-  // 	}
-  // },
-  watch: {
-    button: {
-      handler: function handler(newVal) {
-        this.btn = JSON.stringify(newVal);
-      },
-      deep: true },
-
-    show: function show(newVal) {
-      if (this.autoClose) return;
-      if (!this.button) {
-        this.init();
-        return;
-      }
-      this.button.show = newVal;
-    },
-    leftOptions: function leftOptions() {
-      this.init();
-    },
-    rightOptions: function rightOptions() {
-      this.init();
-    } },
-
-  created: function created() {
-    if (this.swipeaction.children !== undefined) {
-      this.swipeaction.children.push(this);
-    }
-  },
-  mounted: function mounted() {
-    this.init();
-  },
-  beforeDestroy: function beforeDestroy() {var _this = this;
-    this.swipeaction.children.forEach(function (item, index) {
-      if (item === _this) {
-        _this.swipeaction.children.splice(index, 1);
-      }
-    });
-  },
-  methods: {
-    init: function init() {var _this2 = this;
-      clearTimeout(this.swipetimer);
-      this.swipetimer = setTimeout(function () {
-        _this2.getButtonSize();
-      }, 50);
-    },
-    closeSwipe: function closeSwipe(e) {
-      if (!this.autoClose) return;
-      this.swipeaction.closeOther(this);
-    },
-
-    change: function change(e) {
-      this.$emit('change', e.open);
-      var show = this.button.show;
-      if (show !== e.open) {
-        this.button.show = e.open;
-      }
-
-    },
-
-    appTouchStart: function appTouchStart(e) {var
-
-      clientX =
-      e.changedTouches[0].clientX;
-      this.clientX = clientX;
-      this.timestamp = new Date().getTime();
-    },
-    appTouchEnd: function appTouchEnd(e, index, item, position) {var
-
-      clientX =
-      e.changedTouches[0].clientX;
-      // fixed by xxxx 模拟点击事件，解决 ios 13 点击区域错位的问题
-      var diff = Math.abs(this.clientX - clientX);
-      var time = new Date().getTime() - this.timestamp;
-      if (diff < 40 && time < 300) {
-        this.$emit('click', {
-          content: item,
-          index: index,
-          position: position });
-
-      }
-    },
-    getButtonSize: function getButtonSize() {var _this3 = this;
-      var views = uni.createSelectorQuery().in(this);
-      views.
-      selectAll('.uni-swipe_button-group').
-      boundingClientRect(function (data) {
-        var show = 'none';
-        if (_this3.autoClose) {
-          show = 'none';
-        } else {
-          show = _this3.show;
-        }
-        _this3.button = {
-          data: data,
-          show: show };
-
-      }).
-      exec();
-    } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 

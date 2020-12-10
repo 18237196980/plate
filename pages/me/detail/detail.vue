@@ -25,7 +25,7 @@
 					<view class="uni-input">{{ birth }}</view>
 				</picker>
 			</view>
-			<view class="form_btn"><button class="sub_btn" type="primary" form-type="submit">提交</button></view>
+			<view class="form_btn"><button class="sub_btn" :disabled="isDisable" type="primary" form-type="submit">提交</button></view>
 		</form>
 	</view>
 </template>
@@ -70,16 +70,15 @@ export default {
 			regionsName: '北京市,市辖区,东城区',
 			selectCode: ['11', '1101', '110101'],
 			defaultRegions: [],
-			index: -1
+			index: -1,
+			isDisable: false // 防止表单重复提交
 		};
 	},
 	onLoad() {
 		this.loadUser();
 	},
 	methods: {
-		emailChange() {
-			
-		},
+		emailChange() {},
 		async loadUser() {
 			var that = this;
 			var res = await api.loadUser(auth.getUId());
@@ -107,8 +106,16 @@ export default {
 		DateChange(e) {
 			this.birth = e.detail.value;
 		},
+		disabledBtn() {
+			var that=this;
+			that.isDisable = true;
+			setTimeout(function() {
+				that.isDisable = false
+			}, 2000);
+		},
 		async formSubmit(e) {
 			var that = this;
+			that.disabledBtn();
 			var formdata = e.detail.value;
 			formdata.birth = this.birth;
 			if (!util.isEmpty(formdata.mobile) && !util.isPhone(formdata.mobile)) {

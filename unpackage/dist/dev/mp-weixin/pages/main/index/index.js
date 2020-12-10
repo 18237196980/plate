@@ -93,14 +93,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
+  uniIcons: function() {
+    return Promise.all(/*! import() | components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/components/uni-icons/uni-icons.vue */ 105))
+  },
   uniSwipeAction: function() {
-    return __webpack_require__.e(/*! import() | components/uni-swipe-action/uni-swipe-action */ "components/uni-swipe-action/uni-swipe-action").then(__webpack_require__.bind(null, /*! @/components/uni-swipe-action/uni-swipe-action.vue */ 81))
+    return __webpack_require__.e(/*! import() | components/uni-swipe-action/uni-swipe-action */ "components/uni-swipe-action/uni-swipe-action").then(__webpack_require__.bind(null, /*! @/components/uni-swipe-action/uni-swipe-action.vue */ 113))
   },
   uniSwipeActionItem: function() {
-    return Promise.all(/*! import() | components/uni-swipe-action-item/uni-swipe-action-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-swipe-action-item/uni-swipe-action-item")]).then(__webpack_require__.bind(null, /*! @/components/uni-swipe-action-item/uni-swipe-action-item.vue */ 86))
+    return Promise.all(/*! import() | components/uni-swipe-action-item/uni-swipe-action-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-swipe-action-item/uni-swipe-action-item")]).then(__webpack_require__.bind(null, /*! @/components/uni-swipe-action-item/uni-swipe-action-item.vue */ 118))
   },
   page: function() {
-    return __webpack_require__.e(/*! import() | components/page/page */ "components/page/page").then(__webpack_require__.bind(null, /*! @/components/page/page.vue */ 96))
+    return __webpack_require__.e(/*! import() | components/page/page */ "components/page/page").then(__webpack_require__.bind(null, /*! @/components/page/page.vue */ 128))
   }
 }
 var render = function() {
@@ -140,7 +143,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniSwipeAction = function uniSwipeAction() {__webpack_require__.e(/*! require.ensure | components/uni-swipe-action/uni-swipe-action */ "components/uni-swipe-action/uni-swipe-action").then((function () {return resolve(__webpack_require__(/*! @/components/uni-swipe-action/uni-swipe-action */ 81));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var uniSwipeActionItem = function uniSwipeActionItem() {Promise.all(/*! require.ensure | components/uni-swipe-action-item/uni-swipe-action-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-swipe-action-item/uni-swipe-action-item")]).then((function () {return resolve(__webpack_require__(/*! @/components/uni-swipe-action-item/uni-swipe-action-item */ 86));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniSwipeAction = function uniSwipeAction() {__webpack_require__.e(/*! require.ensure | components/uni-swipe-action/uni-swipe-action */ "components/uni-swipe-action/uni-swipe-action").then((function () {return resolve(__webpack_require__(/*! @/components/uni-swipe-action/uni-swipe-action */ 113));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var uniSwipeActionItem = function uniSwipeActionItem() {Promise.all(/*! require.ensure | components/uni-swipe-action-item/uni-swipe-action-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-swipe-action-item/uni-swipe-action-item")]).then((function () {return resolve(__webpack_require__(/*! @/components/uni-swipe-action-item/uni-swipe-action-item */ 118));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var uniIcons = function uniIcons() {Promise.all(/*! require.ensure | components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-icons/uni-icons")]).then((function () {return resolve(__webpack_require__(/*! @/components/uni-icons/uni-icons */ 105));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
 
 
 
@@ -190,7 +193,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// 右侧滑动显示【删除】
+
+
+
 
 var api = __webpack_require__(/*! @/common/api.js */ 20);
 var util = __webpack_require__(/*! @/common/util.js */ 24);var _default =
@@ -198,6 +203,7 @@ var util = __webpack_require__(/*! @/common/util.js */ 24);var _default =
 {
   data: function data() {
     return {
+      clear_flag: false, // 搜索框是否显示叉号
       phone_flag: true, // 点击电话，改变样式
       CustomBar: this.CustomBar,
       list: [], // 列表数据
@@ -212,15 +218,23 @@ var util = __webpack_require__(/*! @/common/util.js */ 24);var _default =
   },
   components: {
     uniSwipeAction: uniSwipeAction,
-    uniSwipeActionItem: uniSwipeActionItem },
+    uniSwipeActionItem: uniSwipeActionItem,
+    uniIcons: uniIcons },
 
-  onShow: function onShow() {
-    this.getData();
-  },
   onLoad: function onLoad() {
     this.getData();
   },
   methods: {
+    // 清除搜索框内容
+    clearSearch: function clearSearch() {
+      this.searchParam = '';
+      this.clear_flag = false;
+      this.getData();
+    },
+    // 搜索框改变监听
+    change: function change() {
+      this.clear_flag = !util.isEmpty(this.searchParam);
+    },
     // 拨打电话
     callPhone: function callPhone(phone) {
       uni.makePhoneCall({
@@ -236,12 +250,15 @@ var util = __webpack_require__(/*! @/common/util.js */ 24);var _default =
         } });
 
     },
+    onLongPress: function onLongPress(e) {
+      this.swipeClick('', e.currentTarget.dataset.index);
+    },
     // 右侧滑动，进行删除
     swipeClick: function swipeClick(e, index) {
       var that = this;
       uni.showModal({
-        title: '提示',
-        content: '是否删除',
+        title: '删除提示',
+        content: '确定删除？',
         success: function () {var _success = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(res) {var id, _res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (!
                     res.confirm) {_context.next = 8;break;}
                     id = that.list[index].id;_context.next = 4;return (
@@ -272,30 +289,40 @@ var util = __webpack_require__(/*! @/common/util.js */ 24);var _default =
     },
     // 下拉刷新
     onPullDownRefresh: function onPullDownRefresh() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
-                _this.getData();case 1:case "end":return _context2.stop();}}}, _callee2);}))();
+                _this.getData(true);case 1:case "end":return _context2.stop();}}}, _callee2);}))();
+    },
+
+    numFormat: function numFormat(num) {
+      var c = num.toString().indexOf('.') !== -1 ? num.toLocaleString() : num.toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
+      return c;
     },
     // 请求后台列表数据
-    getData: function getData() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var self, res, rows, total, i, item, isShowPage, enablePrev, enableNext;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
+    getData: function getData(flag) {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var self, res, rows, total, i, item, isShowPage, enablePrev, enableNext;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
                 self = _this2;
 
                 self.showPage = false;
                 self.list = [];
 
-                uni.showLoading({
-                  title: '加载中...' });_context3.next = 6;return (
+                if (!flag) {
+                  uni.showLoading({
+                    title: '加载中...' });
 
+                }_context3.next = 6;return (
 
                   api.plateList(_this2.pageNumber, _this2.pageSize, _this2.searchParam));case 6:res = _context3.sent;
 
                 uni.hideLoading();
                 uni.stopPullDownRefresh(); //刷新完成后停止下拉刷新动效
                 if (!(
-                res.code == 1)) {_context3.next = 22;break;}
+                res.code == 1)) {_context3.next = 26;break;}
+                uni.hideKeyboard();
                 rows = res.rows;
                 total = res.total;if (!(
-                total <= 0)) {_context3.next = 15;break;}
-                util.showToast('没有相关车辆信息');return _context3.abrupt("return");case 15:
+                total <= 0)) {_context3.next = 18;break;}
+                util.showToast('没有相关车辆信息');return _context3.abrupt("return");case 18:
 
+
+                util.showToast('总共条数:' + self.numFormat(total));case 19:
 
                 for (i = 0; i < rows.length; i++) {
                   item = rows[i];
@@ -314,9 +341,9 @@ var util = __webpack_require__(/*! @/common/util.js */ 24);var _default =
                 enablePrev = self.pageNumber > 1;
                 enableNext = self.pageNumber < total / self.pageSize;
 
-                self.list = rows, self.total = total, self.showPage = isShowPage, self.enablePrev = enablePrev, self.enableNext = enableNext;_context3.next = 23;break;case 22:
+                self.list = rows, self.total = total, self.showPage = isShowPage, self.enablePrev = enablePrev, self.enableNext = enableNext;_context3.next = 27;break;case 26:
 
-                util.showToast(message);case 23:case "end":return _context3.stop();}}}, _callee3);}))();
+                util.showToast(message);case 27:case "end":return _context3.stop();}}}, _callee3);}))();
 
     },
     // 点击一项，进行修改

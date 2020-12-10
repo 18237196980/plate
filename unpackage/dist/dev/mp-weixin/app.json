@@ -8,7 +8,9 @@
     "pages/login/login",
     "pages/reg/reg",
     "pages/me/pwd/pwd",
-    "pages/me/detail/detail"
+    "pages/me/detail/detail",
+    "pages/all/all",
+    "pages/car/car"
   ],
   "subPackages": [],
   "window": {
@@ -28,6 +30,18 @@
         "iconPath": "static/icon_home_normal.png",
         "selectedIconPath": "static/icon_home_press.png",
         "text": "首页"
+      },
+      {
+        "pagePath": "pages/all/all",
+        "iconPath": "static/icon_me_normal.png",
+        "selectedIconPath": "static/icon_me_press.png",
+        "text": "测"
+      },
+      {
+        "pagePath": "pages/car/car",
+        "iconPath": "static/icon_car_normal.png",
+        "selectedIconPath": "static/icon_car_press.png",
+        "text": "车辆"
       },
       {
         "pagePath": "pages/me/me/me",

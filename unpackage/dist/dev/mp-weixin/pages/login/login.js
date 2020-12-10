@@ -193,6 +193,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 var api = __webpack_require__(/*! @/common/api.js */ 20);
 var util = __webpack_require__(/*! @/common/util.js */ 24);
@@ -215,44 +219,79 @@ var auth = __webpack_require__(/*! @/common/auth.js */ 22);var _default =
   },
   computed: {},
   methods: {
+    loginByQQ: function loginByQQ() {
+      util.showToast('开发中...');
+    },
     loginByWX: function loginByWX() {
-      console.log('微信');
       this.handleThirdLoginApp();
     },
-    //app第三方登录
+    getInfoFromWX: function getInfoFromWX() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var that;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                that = _this;
+                uni.login({
+                  provider: 'weixin',
+                  success: function success(loginRes) {
+                    // 获取用户信息
+                    uni.getUserInfo({
+                      provider: 'weixin',
+                      success: function success(infoRes) {
+                        console.log('-------获取微信用户所有-----');
+                        console.log(JSON.stringify(infoRes.userInfo));
+                        var info = infoRes.userInfo;
+                        info.openid = loginRes.authResult.openid;
+                        that.loginWeiXin(info);
+                      } });
 
+                  } });case 2:case "end":return _context.stop();}}}, _callee);}))();
+
+
+    },
+
+    getInfoFromCode: function getInfoFromCode() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var that;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
+                that = _this2;
+                uni.login({
+                  provider: 'weixin',
+                  success: function () {var _success = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2(loginRes) {var code, res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
+                              code = loginRes.code;
+                              // code换取openid
+                              _context2.next = 3;return api.getOpedId(code);case 3:res = _context2.sent;
+                              if (res.code === 1) {
+                                // 获取用户信息
+                                uni.getUserInfo({
+                                  provider: 'weixin',
+                                  success: function success(infoRes) {
+                                    console.log('-------获取微信用户所有-----');
+                                    var info = infoRes.userInfo;
+                                    info.openid = res.data;
+                                    that.loginWeiXin(info);
+                                  } });
+
+                              } else {
+                                util.showToast('微信登陆失败');
+                              }case 5:case "end":return _context2.stop();}}}, _callee2);}));function success(_x) {return _success.apply(this, arguments);}return success;}() });case 2:case "end":return _context3.stop();}}}, _callee3);}))();
+
+
+    },
+    //app第三方登录
     handleThirdLoginApp: function handleThirdLoginApp() {
       var that = this;
-      uni.getProvider({
-        service: 'oauth',
-        success: function success(res) {
-          console.log(res.provider); //支持微信、qq和微博等
-          if (~res.provider.indexOf('weixin')) {
-            uni.login({
-              provider: 'weixin',
-              success: function success(loginRes) {
-                console.log('-------获取openid(unionid)-----');
-                console.log(JSON.stringify(loginRes));
-                // 获取用户信息
-                uni.getUserInfo({
-                  provider: 'weixin',
-                  success: function success(infoRes) {
-                    console.log('-------获取微信用户所有-----');
-                    console.log(JSON.stringify(infoRes.userInfo));
-                    var info = infoRes.userInfo;
-                    info.openid = loginRes.authResult.openid;
-                    that.loginWeiXin(info);
-                  } });
-
-              } });
-
-          }
-        } });
+      var platform = uni.getSystemInfoSync().platform;
+      switch (platform) {
+        case 'android':
+          console.log('运行Android上');
+          that.getInfoFromWX();
+          break;
+        case 'ios':
+          console.log('运行iOS上');
+          break;
+        default:
+          console.log('运行在开发者工具上');
+          that.getInfoFromCode();
+          break;}
 
     },
     // 微信登陆请求后台
-    loginWeiXin: function loginWeiXin(user) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var that, params, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-                that = _this;
+    loginWeiXin: function loginWeiXin(user) {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4() {var that, params, res;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:
+                that = _this3;
                 params = {
                   openid: user.openid,
                   nickName: user.nickName,
@@ -260,16 +299,13 @@ var auth = __webpack_require__(/*! @/common/auth.js */ 22);var _default =
                   unionId: user.unionId };
 
                 // 微信登陆
-                _context.next = 4;return api.loginWeiXin(params);case 4:res = _context.sent;
+                _context4.next = 4;return api.loginWeiXin(params);case 4:res = _context4.sent;
                 if (res.code === 1) {
-                  util.showToast('微信登陆成功');
                   auth.saveLoginInfo(res.data.user, res.data.user.id, res.data.token);
-                  setTimeout(function () {
-                    that.gotoMain();
-                  }, 10);
+                  that.gotoMain();
                 } else {
                   util.showToast(res.message);
-                }case 6:case "end":return _context.stop();}}}, _callee);}))();
+                }case 6:case "end":return _context4.stop();}}}, _callee4);}))();
     },
     // 去注册
     toRegPage: function toRegPage() {
@@ -294,48 +330,47 @@ var auth = __webpack_require__(/*! @/common/auth.js */ 22);var _default =
     },
     login_submit: function login_submit() {
       if (this.loginWay) {
-        this.loginByPhone();
-      } else {
         this.loginByPwd();
+      } else {
+        this.loginByPhone();
       }
     },
     // 从后台获取验证码
-    getCode: function getCode() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res, interval;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
-                console.log(_this2.phone);
-                // 后台生成短信验证码
-                _context2.next = 3;return api.getPhoneCode(_this2.phone, _this2.code_flag);case 3:res = _context2.sent;
-                if (res.code === 1) {
-                  util.showToast('发送验证码成功:' + res.data);
+    getCode: function getCode() {var _this4 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5() {var res, interval;return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:_context5.next = 2;return (
 
-                  _this2.sending_flag = true; // 在发送验证码状态
-                  _this2.rightPhone = false;
+                  api.getPhoneCode(_this4.phone, _this4.code_flag));case 2:res = _context5.sent;
+                if (res.code === 1) {
+                  util.showToast('验证码已发送:' + res.data);
+
+                  _this4.sending_flag = true; // 在发送验证码状态
+                  _this4.rightPhone = false;
 
                   interval = setInterval(function () {
-                    var times = --_this2.second;
-                    _this2.second = times < 10 ? '0' + times : times; // 倒计时60s,小于10秒补 0
+                    var times = --_this4.second;
+                    _this4.second = times < 10 ? '0' + times : times; // 倒计时60s,小于10秒补 0
                   }, 1000);
                   setTimeout(function () {
                     clearInterval(interval);
-                    _this2.sending_flag = false; // 不在发送验证码状态
-                    _this2.second = 60;
-                    _this2.rightPhone = true;
+                    _this4.sending_flag = false; // 不在发送验证码状态
+                    _this4.second = 60;
+                    _this4.rightPhone = true;
                   }, 60000); // 60s后可重新发送验证码
                 } else {
                   util.showToast(res.message);
-                }case 5:case "end":return _context2.stop();}}}, _callee2);}))();
+                }case 4:case "end":return _context5.stop();}}}, _callee5);}))();
     },
-    loginByPhone: function loginByPhone() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var that, res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
-                that = _this3;if (!
-                util.isEmpty(_this3.phone)) {_context3.next = 4;break;}
-                util.showToast('手机号不能为空');return _context3.abrupt("return");case 4:if (!
+    loginByPhone: function loginByPhone() {var _this5 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee6() {var that, res;return _regenerator.default.wrap(function _callee6$(_context6) {while (1) {switch (_context6.prev = _context6.next) {case 0:
+                that = _this5;if (!
+                util.isEmpty(_this5.phone)) {_context6.next = 4;break;}
+                util.showToast('手机号不能为空');return _context6.abrupt("return");case 4:if (!
 
 
-                util.isEmpty(_this3.code)) {_context3.next = 7;break;}
-                util.showToast('验证码不能为空');return _context3.abrupt("return");case 7:_context3.next = 9;return (
+                util.isEmpty(_this5.code)) {_context6.next = 7;break;}
+                util.showToast('验证码不能为空');return _context6.abrupt("return");case 7:_context6.next = 9;return (
 
 
 
-                  api.loginByPhone(_this3.phone, _this3.code));case 9:res = _context3.sent;
+                  api.loginByPhone(_this5.phone, _this5.code));case 9:res = _context6.sent;
                 if (res.code === 1) {
                   util.showToast('登陆成功');
                   auth.saveLoginInfo(res.data.user, res.data.user.id, res.data.token);
@@ -344,24 +379,24 @@ var auth = __webpack_require__(/*! @/common/auth.js */ 22);var _default =
                   }, 200);
                 } else {
                   util.showToast(res.message);
-                }case 11:case "end":return _context3.stop();}}}, _callee3);}))();
+                }case 11:case "end":return _context6.stop();}}}, _callee6);}))();
     },
 
-    loginByPwd: function loginByPwd() {var _this4 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4() {var that, user, res;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:
-                that = _this4;if (!
-                util.isEmpty(that.name)) {_context4.next = 4;break;}
-                util.showToast('用户名不能为空!');return _context4.abrupt("return");case 4:if (!
+    loginByPwd: function loginByPwd() {var _this6 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee7() {var that, user, res;return _regenerator.default.wrap(function _callee7$(_context7) {while (1) {switch (_context7.prev = _context7.next) {case 0:
+                that = _this6;if (!
+                util.isEmpty(that.name)) {_context7.next = 4;break;}
+                util.showToast('用户名不能为空!');return _context7.abrupt("return");case 4:if (!
 
 
-                util.isEmpty(that.pwd)) {_context4.next = 7;break;}
-                util.showToast('密码不能为空!');return _context4.abrupt("return");case 7:
+                util.isEmpty(that.pwd)) {_context7.next = 7;break;}
+                util.showToast('密码不能为空!');return _context7.abrupt("return");case 7:
 
 
                 user = {
                   username: that.name,
-                  password: that.pwd };_context4.next = 10;return (
+                  password: that.pwd };_context7.next = 10;return (
 
-                  api.loginByPwd(user));case 10:res = _context4.sent;
+                  api.loginByPwd(user));case 10:res = _context7.sent;
                 if (res.code === 1) {
                   auth.saveLoginInfo(res.data.user, res.data.user.id, res.data.token);
                   util.showToast('登陆成功');
@@ -370,7 +405,7 @@ var auth = __webpack_require__(/*! @/common/auth.js */ 22);var _default =
                   }, 200);
                 } else {
                   util.showToast(res.message);
-                }case 12:case "end":return _context4.stop();}}}, _callee4);}))();
+                }case 12:case "end":return _context7.stop();}}}, _callee7);}))();
     },
     // 跳转到首页
     gotoMain: function gotoMain() {

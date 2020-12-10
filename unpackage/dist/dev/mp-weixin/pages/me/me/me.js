@@ -94,10 +94,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uniList: function() {
-    return __webpack_require__.e(/*! import() | components/uni-list/uni-list */ "components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/components/uni-list/uni-list.vue */ 103))
+    return __webpack_require__.e(/*! import() | components/uni-list/uni-list */ "components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/components/uni-list/uni-list.vue */ 135))
   },
   uniListItem: function() {
-    return __webpack_require__.e(/*! import() | components/uni-list-item/uni-list-item */ "components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/components/uni-list-item/uni-list-item.vue */ 110))
+    return __webpack_require__.e(/*! import() | components/uni-list-item/uni-list-item */ "components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/components/uni-list-item/uni-list-item.vue */ 142))
   }
 }
 var render = function() {
@@ -137,7 +137,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniList = function uniList() {__webpack_require__.e(/*! require.ensure | components/uni-list/uni-list */ "components/uni-list/uni-list").then((function () {return resolve(__webpack_require__(/*! @/components/uni-list/uni-list.vue */ 103));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var uniListItem = function uniListItem() {__webpack_require__.e(/*! require.ensure | components/uni-list-item/uni-list-item */ "components/uni-list-item/uni-list-item").then((function () {return resolve(__webpack_require__(/*! @/components/uni-list-item/uni-list-item.vue */ 110));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniList = function uniList() {__webpack_require__.e(/*! require.ensure | components/uni-list/uni-list */ "components/uni-list/uni-list").then((function () {return resolve(__webpack_require__(/*! @/components/uni-list/uni-list.vue */ 135));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var uniListItem = function uniListItem() {__webpack_require__.e(/*! require.ensure | components/uni-list-item/uni-list-item */ "components/uni-list-item/uni-list-item").then((function () {return resolve(__webpack_require__(/*! @/components/uni-list-item/uni-list-item.vue */ 142));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
 
 
 
@@ -159,7 +159,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var api = __webpack_require__(/*! @/common/api.js */ 20);
 var util = __webpack_require__(/*! @/common/util.js */ 24);
-var config = __webpack_require__(/*! ../../../config.js */ 23);
+var config = __webpack_require__(/*! @/config.js */ 23);
 var auth = __webpack_require__(/*! @/common/auth.js */ 22);var _default =
 
 {
@@ -187,7 +187,7 @@ var auth = __webpack_require__(/*! @/common/auth.js */ 22);var _default =
         this.header_path = user.header_path;
       }
     }
-    this.name = util.isEmpty(user.name) ? user.nickName : 'Tom';
+    this.name = util.isEmpty(user.name) ? user.nickName : user.name;
   },
   methods: {
     myDetail: function myDetail() {
@@ -225,6 +225,11 @@ var auth = __webpack_require__(/*! @/common/auth.js */ 22);var _default =
             url: config.URL + _this.upload_path,
             filePath: res.tempFilePaths[0],
             name: 'file',
+            header: {
+              'Content-Type': 'application/json',
+              'token': auth.getToken(),
+              'uid': auth.getUId() },
+
             success: function () {var _success = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2(res) {var resDataStr, resData, result, user;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
                         resDataStr = res.data;
                         resData = JSON.parse(resDataStr);if (!(

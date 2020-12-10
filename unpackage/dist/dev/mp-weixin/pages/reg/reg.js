@@ -171,6 +171,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 var api = __webpack_require__(/*! @/common/api.js */ 20);
 var util = __webpack_require__(/*! @/common/util.js */ 24);
@@ -195,8 +197,23 @@ var auth = __webpack_require__(/*! @/common/auth.js */ 22);var _default =
       sending_flag: false // 是否正在倒计时（倒计时时修改手机号，不允许发送验证码）
     };
   },
+  watch: {
+    /* name(new_val, old_val) {
+          	if (new_val == 'aa') {
+          		util.showToast('用户名已使用');
+          	}
+          } */},
+
   computed: {},
   methods: {
+    checkName: function checkName() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (
+                util.isEmpty(_this.name)) {_context.next = 5;break;}_context.next = 3;return (
+                  api.canUseName(_this.name));case 3:res = _context.sent;
+                if (res.code === 0) {
+                  util.showToast('用户名不可用');
+                }case 5:case "end":return _context.stop();}}}, _callee);}))();
+
+    },
     toRegPage: function toRegPage() {
       uni.redirectTo({
         url: '/pages/login/login' });
@@ -212,98 +229,97 @@ var auth = __webpack_require__(/*! @/common/auth.js */ 22);var _default =
         }
       }
     },
-    getCode: function getCode() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res, interval;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-                console.log(_this.phone);
-                // 后台生成短信验证码
-                _context.next = 3;return api.getPhoneCode(_this.phone, _this.code_flag);case 3:res = _context.sent;
-                if (res.code === 1) {
-                  util.showToast('发送验证码成功:' + res.data);
+    getCode: function getCode() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res, interval;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
 
-                  _this.sending_flag = true; // 在发送验证码状态
-                  _this.rightPhone = false;
+                  api.getPhoneCode(_this2.phone, _this2.code_flag));case 2:res = _context2.sent;
+                if (res.code === 1) {
+                  util.showToast('验证码已发送:' + res.data);
+
+                  _this2.sending_flag = true; // 在发送验证码状态
+                  _this2.rightPhone = false;
 
                   interval = setInterval(function () {
-                    var times = --_this.second;
-                    _this.second = times < 10 ? '0' + times : times; // 倒计时60s,小于10秒补 0
+                    var times = --_this2.second;
+                    _this2.second = times < 10 ? '0' + times : times; // 倒计时60s,小于10秒补 0
                   }, 1000);
                   setTimeout(function () {
                     clearInterval(interval);
-                    _this.sending_flag = false; // 不在发送验证码状态
-                    _this.second = 60;
-                    _this.rightPhone = true;
+                    _this2.sending_flag = false; // 不在发送验证码状态
+                    _this2.second = 60;
+                    _this2.rightPhone = true;
                   }, 60000); // 60s后可重新发送验证码
                 } else {
                   util.showToast(res.message);
-                }case 5:case "end":return _context.stop();}}}, _callee);}))();
+                }case 4:case "end":return _context2.stop();}}}, _callee2);}))();
     },
     register_submit: function register_submit() {
-      console.log("aaaaa");
+      console.log('aaaaa');
       this.register();
     },
-    register: function register() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var phonereg, params, res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
-                console.log("bbbbb");
+    register: function register() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var phonereg, params, res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
+                console.log('bbbbb');
                 uni.showLoading({
                   title: '正在注册...' });if (!(
 
-                _this2.phone.length == 0 || _this2.code.length == 0 || _this2.pwd.length == 0 || _this2.re_pwd.length == 0 || _this2.name.length == 0)) {_context2.next = 6;break;}
+                _this3.phone.length == 0 || _this3.code.length == 0 || _this3.pwd.length == 0 || _this3.re_pwd.length == 0 || _this3.name.length == 0)) {_context3.next = 6;break;}
                 uni.hideLoading();
-                util.showToast('信息填写不完整');return _context2.abrupt("return",
+                util.showToast('信息填写不完整');return _context3.abrupt("return",
                 false);case 6:
 
                 //短信验证
                 phonereg = /^[1][3,4,5,6,7,8,9][0-9]{9}$/;if (!(
-                !phonereg.test(_this2.phone) || _this2.phone.length != 11)) {_context2.next = 11;break;}
+                !phonereg.test(_this3.phone) || _this3.phone.length != 11)) {_context3.next = 11;break;}
                 uni.hideLoading();
-                util.showToast('手机号不正确');return _context2.abrupt("return",
+                util.showToast('手机号不正确');return _context3.abrupt("return",
                 false);case 11:if (
 
-                /^\d{4}$/.test(_this2.code)) {_context2.next = 15;break;}
+                /^\d{4}$/.test(_this3.code)) {_context3.next = 15;break;}
                 uni.hideLoading();
-                util.showToast('验证码是4位纯数字');return _context2.abrupt("return",
+                util.showToast('验证码是4位纯数字');return _context3.abrupt("return",
                 false);case 15:if (!(
 
 
-                _this2.name.length < 2 || _this2.name.length > 8)) {_context2.next = 19;break;}
+                _this3.name.length < 2 || _this3.name.length > 8)) {_context3.next = 19;break;}
                 uni.hideLoading();
-                util.showToast('用户名必须是2-8位');return _context2.abrupt("return",
+                util.showToast('用户名必须是2-8位');return _context3.abrupt("return",
                 false);case 19:if (!(
 
-                _this2.pwd.length < 8 || _this2.pwd.length > 16)) {_context2.next = 23;break;}
+                _this3.pwd.length < 8 || _this3.pwd.length > 16)) {_context3.next = 23;break;}
                 uni.hideLoading();
-                util.showToast('密码必须是8-16位数字和字母');return _context2.abrupt("return",
+                util.showToast('密码必须是8-16位数字和字母');return _context3.abrupt("return",
                 false);case 23:if (
 
-                /^(?![^a-zA-Z]+$)(?!\D+$)/.test(_this2.pwd)) {_context2.next = 27;break;}
+                /^(?![^a-zA-Z]+$)(?!\D+$)/.test(_this3.pwd)) {_context3.next = 27;break;}
                 uni.hideLoading();
-                util.showToast('密码必须包含数字、字母');return _context2.abrupt("return",
+                util.showToast('密码必须包含数字、字母');return _context3.abrupt("return",
                 false);case 27:if (!(
 
-                _this2.pwd != _this2.re_pwd)) {_context2.next = 31;break;}
+                _this3.pwd != _this3.re_pwd)) {_context3.next = 31;break;}
                 uni.hideLoading();
-                util.showToast('两次输入的密码不一致');return _context2.abrupt("return",
+                util.showToast('两次输入的密码不一致');return _context3.abrupt("return",
                 false);case 31:
 
                 // 注册新用户
                 params = {
-                  phone: _this2.phone,
-                  code: _this2.code,
-                  pwd: _this2.pwd,
-                  re_pwd: _this2.re_pwd,
-                  name: _this2.name };_context2.next = 34;return (
+                  phone: _this3.phone,
+                  code: _this3.code,
+                  pwd: _this3.pwd,
+                  re_pwd: _this3.re_pwd,
+                  name: _this3.name };_context3.next = 34;return (
 
 
-                  api.register(params));case 34:res = _context2.sent;if (!(
+                  api.register(params));case 34:res = _context3.sent;if (!(
 
-                res.code === 1)) {_context2.next = 41;break;}
+                res.code === 1)) {_context3.next = 41;break;}
                 uni.hideLoading();
                 util.showToast('注册成功，请登录');
                 uni.redirectTo({
-                  url: '/pages/login/login' });_context2.next = 44;break;case 41:
+                  url: '/pages/login/login' });_context3.next = 44;break;case 41:
 
 
                 uni.hideLoading();
-                util.showToast(res.message);return _context2.abrupt("return",
-                false);case 44:case "end":return _context2.stop();}}}, _callee2);}))();
+                util.showToast(res.message);return _context3.abrupt("return",
+                false);case 44:case "end":return _context3.stop();}}}, _callee3);}))();
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

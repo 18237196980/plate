@@ -79,6 +79,7 @@ export default {
 	},
 	// 加载更多
 	onReachBottom() {
+		console.log("触底前-------")
 		this.setListData();
 	},
 	// 下拉刷新

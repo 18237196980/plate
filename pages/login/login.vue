@@ -76,8 +76,7 @@ export default {
 		loginByWX() {
 			this.handleThirdLoginApp();
 		},
-		//app第三方登录
-		handleThirdLoginApp() {
+		async getInfoFromWX(){
 			var that = this;
 			uni.login({
 				provider: 'weixin',
@@ -95,6 +94,51 @@ export default {
 					});
 				}
 			});
+			
+		},
+		
+		async getInfoFromCode(){
+			var that = this;
+			uni.login({
+				provider: 'weixin',
+				success: async function(loginRes) {
+					let code = loginRes.code;
+					// code换取openid
+					var res = await api.getOpedId(code);
+					if (res.code===1){
+						// 获取用户信息
+						uni.getUserInfo({
+							provider: 'weixin',
+							success: function(infoRes) {
+								console.log('-------获取微信用户所有-----');
+								var info = infoRes.userInfo;
+								info.openid = res.data;
+								that.loginWeiXin(info);
+							}
+						});
+					}else{
+						util.showToast('微信登陆失败');
+					}
+				}
+			});
+		},
+		//app第三方登录
+		handleThirdLoginApp() {
+			var that = this;
+			let platform = uni.getSystemInfoSync().platform;
+			switch (platform) {
+				case 'android':
+					console.log('运行Android上');
+					that.getInfoFromWX();
+					break;
+				case 'ios':
+					console.log('运行iOS上');
+					break;
+				default:
+					console.log('运行在开发者工具上');
+					that.getInfoFromCode();
+					break;
+			}
 		},
 		// 微信登陆请求后台
 		async loginWeiXin(user) {
@@ -144,7 +188,6 @@ export default {
 		},
 		// 从后台获取验证码
 		async getCode() {
-			console.log(this.phone);
 			// 后台生成短信验证码
 			var res = await api.getPhoneCode(this.phone, this.code_flag);
 			if (res.code === 1) {

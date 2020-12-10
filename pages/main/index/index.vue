@@ -146,6 +146,11 @@ export default {
 		async onPullDownRefresh() {
 			this.getData(true);
 		},
+
+		numFormat(num) {
+			var c = num.toString().indexOf('.') !== -1 ? num.toLocaleString() : num.toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
+			return c;
+		},
 		// 请求后台列表数据
 		async getData(flag) {
 			let self = this;
@@ -153,7 +158,7 @@ export default {
 			self.showPage = false;
 			self.list = [];
 
-			if (!flag){
+			if (!flag) {
 				uni.showLoading({
 					title: '加载中...'
 				});
@@ -171,8 +176,8 @@ export default {
 				if (total <= 0) {
 					util.showToast('没有相关车辆信息');
 					return;
-				}else{
-					util.showToast('总共条数:'+total);
+				} else {
+					util.showToast('总共条数:' + self.numFormat(total));
 				}
 				for (var i = 0; i < rows.length; i++) {
 					var item = rows[i];

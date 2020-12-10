@@ -166,7 +166,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 var api = __webpack_require__(/*! @/common/api.js */ 20);
-var util = __webpack_require__(/*! @/common/util.js */ 24);var plateInput = function plateInput() {__webpack_require__.e(/*! require.ensure | components/uni-plate-input/uni-plate-input */ "components/uni-plate-input/uni-plate-input").then((function () {return resolve(__webpack_require__(/*! @/components/uni-plate-input/uni-plate-input.vue */ 117));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var util = __webpack_require__(/*! @/common/util.js */ 24);var plateInput = function plateInput() {__webpack_require__.e(/*! require.ensure | components/uni-plate-input/uni-plate-input */ "components/uni-plate-input/uni-plate-input").then((function () {return resolve(__webpack_require__(/*! @/components/uni-plate-input/uni-plate-input.vue */ 149));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 {
@@ -177,7 +177,8 @@ var util = __webpack_require__(/*! @/common/util.js */ 24);var plateInput = func
     return {
       plateNo: '',
       plateShow: false,
-      inputDisabled: true };
+      inputDisabled: true,
+      isDisable: false };
 
   },
   methods: {
@@ -185,9 +186,22 @@ var util = __webpack_require__(/*! @/common/util.js */ 24);var plateInput = func
       if (plate.length >= 7) this.plateNo = plate;
       this.plateShow = false;
     },
-    formSubmit: function formSubmit(e) {return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var formdata, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-                formdata = e.detail.value;_context.next = 3;return (
-                  api.addPlate(formdata));case 3:res = _context.sent;
+    disabledBtn: function disabledBtn() {
+      var that = this;
+      that.isDisable = true;
+      setTimeout(function () {
+        that.isDisable = false;
+      }, 2000);
+    },
+    formSubmit: function formSubmit(e) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var that, formdata, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                that = _this;
+                that.disabledBtn();
+                formdata = e.detail.value;if (!(
+                !util.isEmpty(formdata.phone) && !util.isPhone(formdata.phone))) {_context.next = 6;break;}
+                util.showToast('手机号格式有误!');return _context.abrupt("return");case 6:_context.next = 8;return (
+
+
+                  api.addPlate(formdata));case 8:res = _context.sent;
 
                 if (res.code == 1) {
                   util.showToast('添加成功');
@@ -197,7 +211,7 @@ var util = __webpack_require__(/*! @/common/util.js */ 24);var plateInput = func
                   }, 500);
                 } else {
                   util.showToast(res.message);
-                }case 5:case "end":return _context.stop();}}}, _callee);}))();
+                }case 10:case "end":return _context.stop();}}}, _callee);}))();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

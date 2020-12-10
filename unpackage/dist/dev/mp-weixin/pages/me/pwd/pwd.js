@@ -157,33 +157,56 @@ var auth = __webpack_require__(/*! @/common/auth.js */ 22);var _default =
 
 {
   data: function data() {
-    return {};
+    return {
+      isDisable: false };
+
   },
   methods: {
+    disabledBtn: function disabledBtn() {
+      var that = this;
+      that.isDisable = true;
+      setTimeout(function () {
+        that.isDisable = false;
+      }, 2000);
+    },
     formSubmit: function formSubmit(e) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var that, uid, formdata, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
                 that = _this;
+                that.disabledBtn();
                 uid = auth.getUId();
-                formdata = e.detail.value;
+                formdata = e.detail.value;if (!
 
-                //用户名和密码验证
-                if (!(formdata.pwd.length < 8 || formdata.pwd.length > 16)) {_context.next = 7;break;}
+                util.isEmpty(formdata.old_pwd)) {_context.next = 7;break;}
+                util.showToast('旧密码不能为空');return _context.abrupt("return");case 7:if (!
+
+
+                util.isEmpty(formdata.pwd)) {_context.next = 10;break;}
+                util.showToast('新密码不能为空');return _context.abrupt("return");case 10:if (!
+
+
+                util.isEmpty(formdata.re_pwd)) {_context.next = 13;break;}
+                util.showToast('确认密码不能为空');return _context.abrupt("return");case 13:if (!(
+
+
+
+
+                formdata.pwd.length < 8 || formdata.pwd.length > 16)) {_context.next = 17;break;}
                 uni.hideLoading();
                 util.showToast('新密码必须是8-16位数字和字母');return _context.abrupt("return",
-                false);case 7:if (
+                false);case 17:if (
 
-                /^(?![^a-zA-Z]+$)(?!\D+$)/.test(formdata.pwd)) {_context.next = 11;break;}
+                /^(?![^a-zA-Z]+$)(?!\D+$)/.test(formdata.pwd)) {_context.next = 21;break;}
                 uni.hideLoading();
                 util.showToast('新密码必须包含数字、字母');return _context.abrupt("return",
-                false);case 11:if (!(
+                false);case 21:if (!(
 
-                formdata.pwd != formdata.re_pwd)) {_context.next = 15;break;}
+                formdata.pwd != formdata.re_pwd)) {_context.next = 25;break;}
                 uni.hideLoading();
                 util.showToast('两次输入的密码不一致');return _context.abrupt("return",
-                false);case 15:
+                false);case 25:
 
 
-                formdata.uid = uid;_context.next = 18;return (
-                  api.updatePwd(formdata));case 18:res = _context.sent;
+                formdata.uid = uid;_context.next = 28;return (
+                  api.updatePwd(formdata));case 28:res = _context.sent;
 
                 if (res.code == 1) {
                   util.showToast('密码修改成功,请重新登陆!');
@@ -193,7 +216,7 @@ var auth = __webpack_require__(/*! @/common/auth.js */ 22);var _default =
                   }, 1000);
                 } else {
                   util.showToast(res.message);
-                }case 20:case "end":return _context.stop();}}}, _callee);}))();
+                }case 30:case "end":return _context.stop();}}}, _callee);}))();
     },
     gotoLogin: function gotoLogin() {
       uni.redirectTo({

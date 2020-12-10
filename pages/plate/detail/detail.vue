@@ -38,7 +38,7 @@
 				<input v-model="update_time" :disabled="true" />
 			</view>
 
-			<view class="form_btn"><button class="sub_btn" type="primary" form-type="submit">提交修改</button></view>
+			<view class="form_btn"><button class="sub_btn" :disabled="isDisable" type="primary" form-type="submit">提交修改</button></view>
 		</form>
 	</view>
 </template>
@@ -55,7 +55,6 @@ export default {
 		return {
 			plateShow: false,
 			inputDisabled: true,
-			
 			id: '',
 			disabled_flag: false,
 			code: '',
@@ -65,7 +64,8 @@ export default {
 			create_time: '',
 			create_user: '',
 			update_user: '',
-			update_time: ''
+			update_time: '',
+			isDisable: false
 		};
 	},
 	onLoad(options) {
@@ -91,7 +91,15 @@ export default {
 				this.update_time = res.data.update_time;
 			}
 		},
+		disabledBtn() {
+			var that = this;
+			that.isDisable = true;
+			setTimeout(function() {
+				that.isDisable = false;
+			}, 2000);
+		},
 		async formSubmit(e) {
+			this.disabledBtn();
 			var formdata = e.detail.value;
 			if (!util.isEmpty(formdata.phone) && !util.isPhone(formdata.phone)) {
 				util.showToast('手机号格式有误!');

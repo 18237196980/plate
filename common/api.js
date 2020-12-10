@@ -43,6 +43,12 @@ export function loadUser(id) {
 	return net.post(url)
 }
 
+// 根据code获取openid
+export function getOpedId(code) {
+	let url = `/plate/user/getOpedId?code=${code}`
+	return net.post(url)
+}
+
 // 修改密码
 export function updatePwd(params) {
 	let url = `/plate/me/updatePwd`

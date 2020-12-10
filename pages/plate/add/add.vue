@@ -19,7 +19,7 @@
 				<input placeholder-class="p-class" placeholder="请输入户号" name="apply_address" />
 			</view>
 
-			<view class="form_btn"><button class="sub_btn" type="primary" form-type="submit">提交</button></view>
+			<view class="form_btn"><button class="sub_btn" :disabled="isDisable" type="primary" form-type="submit">提交</button></view>
 		</form>
 	</view>
 </template>
@@ -36,7 +36,8 @@ export default {
 		return {
 			plateNo: '',
 			plateShow: false,
-			inputDisabled: true
+			inputDisabled: true,
+			isDisable: false
 		};
 	},
 	methods: {
@@ -44,7 +45,16 @@ export default {
 			if (plate.length >= 7) this.plateNo = plate;
 			this.plateShow = false;
 		},
+		disabledBtn() {
+			var that = this;
+			that.isDisable = true;
+			setTimeout(function() {
+				that.isDisable = false;
+			}, 2000);
+		},
 		async formSubmit(e) {
+			var that = this;
+			that.disabledBtn();
 			var formdata = e.detail.value;
 			if (!util.isEmpty(formdata.phone) && !util.isPhone(formdata.phone)) {
 				util.showToast('手机号格式有误!');

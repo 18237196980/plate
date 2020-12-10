@@ -14,7 +14,7 @@
 				<input placeholder="请重复新密码" name="re_pwd" />
 			</view>
 
-			<view class="form_btn"><button class="sub_btn" type="primary" form-type="submit">提交</button></view>
+			<view class="form_btn"><button class="sub_btn" :disabled="isDisable" type="primary" form-type="submit">提交</button></view>
 		</form>
 	</view>
 </template>
@@ -25,11 +25,21 @@ const auth = require('@/common/auth.js');
 
 export default {
 	data() {
-		return {};
+		return {
+			isDisable: false
+		};
 	},
 	methods: {
+		disabledBtn() {
+			var that = this;
+			that.isDisable = true;
+			setTimeout(function() {
+				that.isDisable = false;
+			}, 2000);
+		},
 		async formSubmit(e) {
 			var that = this;
+			that.disabledBtn();
 			var uid = auth.getUId();
 			var formdata = e.detail.value;
 

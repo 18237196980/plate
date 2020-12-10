@@ -8,6 +8,10 @@ page {
 	padding: 20rpx;
 }
 /* 搜索 */
+.clear_icon {
+	margin-right: 20rpx;
+	z-index: 99;
+}
 .indexes {
 	position: relative;
 }
@@ -116,7 +120,7 @@ movable-view.indexBar-item::before {
 	-webkit-border-radius: 8rpx;
 	        border-radius: 8rpx;
 }
-.bg-click{
+.bg-click {
 	background-color: #efeee9;
 }
 .item_id {

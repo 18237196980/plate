@@ -2287,9 +2287,9 @@ to {
 	-webkit-align-items: center;
 	        align-items: center;
 	min-height: 100rpx;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	        justify-content: space-between;
+	-webkit-box-pack: start;
+	-webkit-justify-content: flex-start;
+	        justify-content: flex-start;
 }
 .cu-form-group+.cu-form-group {
 	border-top: 1rpx solid #eee;
@@ -2347,7 +2347,7 @@ to {
 	white-space: nowrap;
 	overflow: hidden;
 	width: 100%;
-	text-align: right;
+	text-align: left;
 }
 .cu-form-group picker::after {
 	font-family: cuIcon;
@@ -4639,6 +4639,20 @@ scroll-view.cu-steps .cu-item {
 }
 .cuIcon-btn:before {
 	content: "\e601";
+}
+.uni-padding-wrap{
+	width:690rpx;
+	padding:0 30rpx;
+}
+.uni-common-mt{
+	margin-top:30rpx;
+}
+/* loadmore */
+.uni-loadmore{
+	height:80rpx;
+	line-height:80rpx;
+	text-align:center;
+	padding-bottom:30rpx;
 }
 page {
 	width: 100%;
